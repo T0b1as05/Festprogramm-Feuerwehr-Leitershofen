@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🔥 Festprogramm Feuerwehr Leitershofen 🔥</title>
 
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -12,24 +13,19 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
+      padding: 2rem 1rem;
       background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
       font-family: 'Inter', sans-serif;
+      min-height: 100vh;
       color: white;
-      overflow: hidden; /* ❗️Wichtig: kein Scroll */
-    }
-
-    body {
+      animation: fadeIn 1.2s ease-in-out;
+      overflow-x: hidden;
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      animation: fadeIn 1.2s ease-in-out;
-      gap: 2rem;
-      padding: 1rem;
     }
 
     @keyframes fadeIn {
@@ -43,6 +39,14 @@
       }
     }
 
+    .content {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
     .image-wrapper {
       position: relative;
       display: inline-block;
@@ -51,8 +55,6 @@
       box-shadow:
         0 0 40px rgba(255, 0, 0, 0.4),
         0 0 80px rgba(255, 0, 0, 0.2);
-      max-height: 70vh;
-      max-width: 90vw;
     }
 
     .image-wrapper::after {
@@ -74,7 +76,8 @@
 
     img {
       display: block;
-      width: 100%;
+      max-width: 100%;
+      max-height: 80vh;
       height: auto;
       border-radius: 24px;
     }
@@ -104,25 +107,26 @@
         inset 0 0 20px rgba(255, 150, 150, 0.3);
     }
 
-    @media (max-height: 600px), (max-width: 600px) {
-      .image-wrapper {
-        max-height: 60vh;
+    @media (max-width: 600px) {
+      .content {
+        margin-top: 1rem;
+        gap: 1rem;
       }
 
       a.button {
         font-size: 1rem;
         padding: 12px 20px;
       }
-
-      body {
-        gap: 1.2rem;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="image-wrapper">
-    <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
-  </div>
-  <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
-    📥 Festprogramm als PDF herunterladen
+  <main class="content">
+    <div class="image-wrapper">
+      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
+    </div>
+    <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
+      📥 Festprogramm als PDF herunterladen
+    </a>
+  </main>
+</body>
