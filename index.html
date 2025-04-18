@@ -3,26 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Festprogramm</title>
+  <title>Festprogramm Feuerwehr Leitershofen</title>
   <style>
-    * {
+    body {
       margin: 0;
-      padding: 0;
+      background-color: rgb(51, 51, 51);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
     }
-    html, body {
-      height: 100%;
-      width: 100%;
-      background-color: rgb(51, 51, 51); /* dein Farbcode */
-    }
+
     img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
+      max-width: 90%;
+      max-height: 80%;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    a.button {
+      text-decoration: none;
+      background-color: #e60000;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    a.button:hover {
+      background-color: #cc0000;
     }
   </style>
 </head>
 <body>
   <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen">
+  <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
+    📥 Festprogramm als PDF herunterladen
+  </a>
 </body>
 </html>
