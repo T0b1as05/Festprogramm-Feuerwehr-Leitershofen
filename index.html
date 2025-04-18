@@ -15,7 +15,7 @@
 
     body {
       margin: 0;
-      padding: 0;
+      padding: 2rem 1rem;
       background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
       font-family: 'Inter', sans-serif;
       display: flex;
@@ -23,9 +23,7 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      padding: 2rem;
       animation: fadeIn 1.2s ease-in-out;
-      overflow: hidden;
       color: white;
     }
 
@@ -42,12 +40,12 @@
 
     .image-wrapper {
       position: relative;
-      display: inline-block;
-      border-radius: 24px;
+      max-width: 100%;
+      max-height: 80vh;
       overflow: hidden;
-      box-shadow:
-        0 0 40px rgba(255, 0, 0, 0.4),
-        0 0 80px rgba(255, 0, 0, 0.2);
+      border-radius: 24px;
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),
+                  0 0 80px rgba(255, 0, 0, 0.2);
       margin-bottom: 30px;
     }
 
@@ -61,6 +59,7 @@
       background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
       transform: skewX(-20deg);
       animation: shimmer 2.5s infinite;
+      pointer-events: none;
     }
 
     @keyframes shimmer {
@@ -68,9 +67,9 @@
       100% { left: 125%; }
     }
 
-    img {
+    .image-wrapper img {
       display: block;
-      max-width: 100%;
+      width: 100%;
       height: auto;
       border-radius: 24px;
     }
@@ -83,6 +82,7 @@
       text-decoration: none;
       font-weight: 700;
       font-size: 1.1rem;
+      white-space: nowrap;
       box-shadow:
         0 0 20px rgba(255, 0, 0, 0.7),
         0 0 40px rgba(255, 0, 0, 0.4),
@@ -99,10 +99,10 @@
         inset 0 0 20px rgba(255, 150, 150, 0.3);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 480px) {
       a.button {
-        font-size: 1rem;
-        padding: 14px 24px;
+        padding: 12px 20px;
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -111,6 +111,6 @@
   <div class="image-wrapper">
     <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
   </div>
-  <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf">📥 Festprogramm als PDF herunterladen</a>
+  <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>📥 Festprogramm als PDF herunterladen</a>
 </body>
 </html>
