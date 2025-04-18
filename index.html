@@ -3,138 +3,182 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>150 Jahre Feuerwehr Leitershofen</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <title>🔥 Festprogramm Feuerwehr Leitershofen 🔥</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.png" type="image/png" />
 
   <style>
-    :root {
-      --bg: #121212;
-      --red: #d60000;
-      --white: #ffffff;
-      --gray: #e0e0e0;
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-    }
-
-    header {
-      background-color: #1f1f1f;
-      padding: 3rem 1rem 2rem;
-      text-align: center;
-      border-bottom: 2px solid var(--red);
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--white);
-      margin: 0;
-    }
-
-    header p {
-      color: var(--gray);
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      color: var(--red);
-      border-bottom: 1px solid var(--red);
-      padding-bottom: 0.3rem;
-      margin-top: 2.5rem;
-    }
-
-    .event {
-      padding: 0.5rem 0;
-      border-left: 3px solid #333;
-      margin-left: 1rem;
-      padding-left: 1rem;
-    }
-
-    .event time {
-      font-weight: 600;
-      color: var(--gray);
-      display: inline-block;
-      min-width: 90px;
-    }
-
-    .download {
-      text-align: center;
-      margin: 3rem 0;
-    }
-
-    .download a {
-      display: inline-block;
-      background-color: var(--red);
-      color: var(--white);
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s ease;
-    }
-
-    .download a:hover {
-      background-color: #b00000;
-    }
-
-    footer {
-      text-align: center;
       padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #888;
+      background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      color: white;
+      animation: fadeIn 1.2s ease-in-out;
+      overflow-x: hidden;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .content {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1000px;
+      text-align: center;
+    }
+
+    .image-wrapper {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow:
+        0 0 40px rgba(255, 0, 0, 0.4),
+        0 0 80px rgba(255, 0, 0, 0.2);
+    }
+
+    .image-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 2.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 24px;
+    }
+
+    a.button {
+      background: rgb(218, 23, 28);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      white-space: nowrap;
+      box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.7),
+        0 0 40px rgba(255, 0, 0, 0.4),
+        inset 0 0 10px rgba(255, 100, 100, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    a.button:hover {
+      background: rgb(180, 0, 10);
+      transform: scale(1.06);
+      box-shadow:
+        0 0 30px rgba(255, 60, 60, 0.9),
+        0 0 80px rgba(255, 60, 60, 0.5),
+        inset 0 0 20px rgba(255, 150, 150, 0.3);
+    }
+
+    .countdown {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ff4c4c;
+      text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    }
+
+    .countdown span {
+      display: inline-block;
+      min-width: 60px;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        gap: 1.5rem;
+      }
+
+      .countdown {
+        font-size: 1.2rem;
+      }
+
+      a.button {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
     }
   </style>
 </head>
 <body>
+  <main class="content">
+    <div class="countdown" id="countdown">
+      ⏳ Countdown läuft...
+    </div>
 
-  <header>
-    <h1>150 Jahre Feuerwehr Leitershofen</h1>
-    <p>Festprogramm vom 4. bis 6. Juli 2025</p>
-  </header>
+    <div class="image-wrapper">
+      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
+    </div>
 
-  <main class="container">
-    <h2>Freitag · 04.07.2025</h2>
-    <div class="event"><time>17:00 Uhr</time> Öffnung des Straßenfestes</div>
-    <div class="event"><time>19:00 Uhr</time> Livemusik mit „Trumpet-Band“</div>
-
-    <h2>Samstag · 05.07.2025</h2>
-    <div class="event"><time>11:30 Uhr</time> Eröffnung</div>
-    <div class="event"><time>13:00 Uhr</time> Vorführung Hundestaffel</div>
-    <div class="event"><time>14:00 Uhr</time> Beginn Tauchcontainer</div>
-    <div class="event"><time>15:00 Uhr</time> Vorführung Schule Leitershofen</div>
-    <div class="event"><time>15:30 Uhr</time> Feuerwehrolympiade</div>
-    <div class="event"><time>18:00 Uhr</time> Siegerehrung</div>
-    <div class="event"><time>19:00 Uhr</time> Livemusik mit „Die Lumpenbacher“</div>
-
-    <h2>Sonntag · 06.07.2025</h2>
-    <div class="event"><time>10:30 Uhr</time> Festgottesdienst</div>
-    <div class="event"><time>11:30 Uhr</time> Mittagessen (Spanferkel)</div>
-    <div class="event"><time>13:30 Uhr</time> Aufstellung zum Festumzug</div>
-    <div class="event"><time>14:00 Uhr</time> Beginn Festumzug</div>
-    <div class="event"><time>15:30 Uhr</time> Einzug der Fahnen & Musikkapelle</div>
+    <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
+      📥 Festprogramm als PDF herunterladen
+    </a>
   </main>
 
-  <div class="download">
-    <a href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>📄 Festprogramm als PDF</a>
-  </div>
+  <script>
+    const countdownEl = document.getElementById('countdown');
+    const targetDate = new Date("2025-07-04T17:00:00");
 
-  <footer>
-    © 2025 Freiwillige Feuerwehr Leitershofen
-  </footer>
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
 
+      if (diff <= 0) {
+        countdownEl.innerHTML = "🚒 Das Fest hat begonnen!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerHTML = `
+        ⏳ Noch <span>${days} Tage</span> 
+        <span>${hours} Std</span> 
+        <span>${minutes} Min</span> 
+        <span>${seconds} Sek</span> bis zum Festbeginn
+      `;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
