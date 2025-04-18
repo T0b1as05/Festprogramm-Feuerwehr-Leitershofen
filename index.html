@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🔥 Festprogramm Feuerwehr Leitershofen 🔥</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
     * {
       box-sizing: border-box;
@@ -13,65 +12,42 @@
 
     body {
       margin: 0;
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
       background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
       font-family: 'Inter', sans-serif;
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       min-height: 100vh;
       overflow: hidden;
-    }
-
-    .flame-logo {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 1rem;
-      animation: flicker 1s infinite alternate;
-    }
-
-    @keyframes flicker {
-      0% { filter: drop-shadow(0 0 4px red); }
-      100% { filter: drop-shadow(0 0 12px orange); }
     }
 
     .content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
-      max-width: 800px;
       text-align: center;
+      gap: 1.2rem;
+      max-width: 95vw;
+      width: 720px;
     }
 
     .image-wrapper {
-      max-height: 60vh;
       width: 100%;
-      overflow: hidden;
       border-radius: 20px;
+      overflow: hidden;
       box-shadow:
-        0 0 30px rgba(255, 0, 0, 0.4),
-        0 0 60px rgba(255, 0, 0, 0.2);
+        0 0 20px rgba(255, 0, 0, 0.3),
+        0 0 60px rgba(255, 0, 0, 0.1);
     }
 
     .image-wrapper img {
       width: 100%;
       height: auto;
+      display: block;
       border-radius: 20px;
-    }
-
-    .countdown {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #ff4c4c;
-      text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
-    }
-
-    .countdown span {
-      display: inline-block;
-      min-width: 60px;
     }
 
     a.button {
@@ -99,32 +75,33 @@
         inset 0 0 20px rgba(255, 150, 150, 0.3);
     }
 
-    @media (max-width: 768px) {
-      body {
-        padding: 1rem;
+    .countdown {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ff4c4c;
+      text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        width: 100%;
       }
       .countdown {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
-      .image-wrapper {
-        max-height: 50vh;
+      a.button {
+        font-size: 1rem;
+        padding: 12px 20px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- 🔥 Animated Flame Logo -->
-  <svg class="flame-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="orange">
-    <path d="M32 2C20 14 36 28 24 40c-8 8 0 20 8 20s16-10 16-20c0-10-8-14-16-28z"/>
-  </svg>
-
   <main class="content">
     <div class="countdown" id="countdown">⏳ Countdown läuft...</div>
-
     <div class="image-wrapper">
-      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen">
+      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
     </div>
-
     <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
       📥 Festprogramm als PDF herunterladen
     </a>
@@ -149,10 +126,10 @@
       const seconds = Math.floor((diff / 1000) % 60);
 
       countdownEl.innerHTML = `
-        ⏳ Noch <span>${days} Tage</span> 
-        <span>${hours} Std</span> 
-        <span>${minutes} Min</span> 
-        <span>${seconds} Sek</span> bis zum Festbeginn
+        ⏳ Noch <strong>${days} Tage</strong>, 
+        <strong>${hours} Std</strong>, 
+        <strong>${minutes} Min</strong>, 
+        <strong>${seconds} Sek</strong> bis zum Festbeginn
       `;
     }
 
