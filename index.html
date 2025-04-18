@@ -38,39 +38,39 @@
       animation-delay: 3s;
     }
 
-    .logo-wrapper {
+    .logo-border {
       position: relative;
       display: inline-block;
-      max-width: 50vw;
+      padding: 10px;
+      border-radius: 20px;
+      overflow: hidden;
     }
 
-    .logo-wrapper img {
+    .logo-border::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%;
+      height: 100%;
+      border: 3px solid red;
+      border-radius: 20px;
+      filter: drop-shadow(0 0 10px red);
+      animation: border-shine 2s ease-out forwards;
+    }
+
+    @keyframes border-shine {
+      0%   { left: -100%; opacity: 0; }
+      10%  { opacity: 1; }
+      50%  { left: 0%; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    .logo-border img {
       width: 100%;
       height: auto;
       display: block;
+      border-radius: 20px;
       animation: scaleIn 1.2s ease-out forwards;
-    }
-
-    .logo-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(255, 80, 80, 0.6) 50%,
-        transparent 100%
-      );
-      animation: shine 1.8s ease-out 0.4s forwards;
-      pointer-events: none;
-    }
-
-    @keyframes shine {
-      0% { left: -100%; }
-      100% { left: 100%; }
     }
 
     .intro h1 {
@@ -95,25 +95,13 @@
     }
 
     @keyframes scaleIn {
-      0% {
-        transform: scale(0.6);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     @keyframes slideInUp {
-      0% {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
     @keyframes fadeIn {
@@ -185,7 +173,7 @@
     }
 
     @media (max-width: 600px) {
-      .logo-wrapper {
+      .logo-border {
         max-width: 80vw;
       }
 
@@ -206,7 +194,7 @@
 </head>
 <body>
   <div class="intro">
-    <div class="logo-wrapper">
+    <div class="logo-border">
       <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
     </div>
     <h1>150 Jahre</h1>
