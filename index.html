@@ -12,10 +12,23 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background-color: black;
+      background: linear-gradient(to bottom, #000000 0%, #1a1a1a 100%);
       font-family: 'Inter', sans-serif;
       color: white;
       overscroll-behavior: none;
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .intro, main {
+      position: relative;
+      z-index: 1;
     }
 
     .intro {
@@ -140,6 +153,7 @@
   </style>
 </head>
 <body>
+  <div id="particles-js"></div>
   <div class="intro">
     <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
     <h1>150 Jahre</h1>
@@ -154,5 +168,30 @@
       📥 Festprogramm als PDF herunterladen
     </a>
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        color: { value: "#ff3c00" },
+        shape: { type: "circle" },
+        opacity: { value: 0.7 },
+        size: { value: 3 },
+        move: {
+          direction: "top",
+          speed: 1,
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: false }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>
