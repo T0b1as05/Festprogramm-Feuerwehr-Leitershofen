@@ -4,83 +4,117 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🔥 Festprogramm Feuerwehr Leitershofen 🔥</title>
+
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
-      padding: 0;
-      margin: 0;
     }
 
-    html, body {
-      height: 100dvh;
-      width: 100%;
-      overflow: hidden;
-      background: radial-gradient(circle at center, #1e1e1e, #121212);
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
       font-family: 'Inter', sans-serif;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      animation: fadeIn 1.2s ease-in-out;
+      overflow: hidden;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .image-wrapper {
       position: relative;
-    }
-
-    .content {
-      max-width: 100%;
-      max-height: 100%;
-      padding-bottom: 80px; /* Platz für Button auf kleineren Screens */
-    }
-
-    .content img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      display: inline-block;
       border-radius: 24px;
+      overflow: hidden;
       box-shadow:
-        0 0 40px rgba(255, 0, 0, 0.3),
+        0 0 40px rgba(255, 0, 0, 0.4),
         0 0 80px rgba(255, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
+
+    .image-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 2.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 80vh; /* Verhindert Abschneiden auf PC */
+      height: auto;
+      border-radius: 24px;
     }
 
     a.button {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
       background: rgb(218, 23, 28);
       color: white;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 14px;
       text-decoration: none;
-      white-space: nowrap;
+      font-weight: 700;
+      font-size: 1.1rem;
+      white-space: nowrap; /* Verhindert Umbruch */
       box-shadow:
-        0 0 15px rgba(255, 0, 0, 0.6),
-        0 0 25px rgba(255, 50, 50, 0.4),
+        0 0 20px rgba(255, 0, 0, 0.7),
+        0 0 40px rgba(255, 0, 0, 0.4),
         inset 0 0 10px rgba(255, 100, 100, 0.3);
       transition: all 0.3s ease;
     }
 
     a.button:hover {
       background: rgb(180, 0, 10);
-      transform: translateX(-50%) scale(1.05);
+      transform: scale(1.06);
       box-shadow:
-        0 0 25px rgba(255, 0, 0, 0.8),
-        0 0 60px rgba(255, 0, 0, 0.4),
-        inset 0 0 15px rgba(255, 120, 120, 0.4);
+        0 0 30px rgba(255, 60, 60, 0.9),
+        0 0 80px rgba(255, 60, 60, 0.5),
+        inset 0 0 20px rgba(255, 150, 150, 0.3);
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
       a.button {
-        font-size: 0.9rem;
+        font-size: 1rem;
         padding: 12px 20px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="content">
+  <div class="image-wrapper">
     <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
   </div>
-  <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>📥 Festprogramm als PDF herunterladen</a>
+  <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
+    📥 Festprogramm als PDF herunterladen
+  </a>
 </body>
 </html>
