@@ -3,112 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🔥 Festprogramm Feuerwehr Leitershofen 🔥</title>
+  <title>150 Jahre Feuerwehr Leitershofen</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.png" type="image/png" />
+
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      padding: 1.5rem 1rem;
       background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
-      font-family: 'Inter', sans-serif;
       color: white;
+      font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      padding: 2rem 1rem;
       overflow: hidden;
     }
 
     .content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      max-width: 1000px;
       text-align: center;
-      gap: 1.2rem;
-      max-width: 95vw;
-      width: 720px;
     }
 
     .image-wrapper {
-      width: 100%;
-      border-radius: 20px;
+      position: relative;
+      display: inline-block;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow:
-        0 0 20px rgba(255, 0, 0, 0.3),
-        0 0 60px rgba(255, 0, 0, 0.1);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
     }
 
-    .image-wrapper img {
-      width: 100%;
+    img {
+      max-width: 100%;
       height: auto;
-      display: block;
-      border-radius: 20px;
+      border-radius: 16px;
     }
 
-    a.button {
-      background: rgb(218, 23, 28);
+    .button {
+      margin-top: 1.5rem;
+      display: inline-block;
+      background: #d60000;
       color: white;
-      padding: 14px 28px;
-      border-radius: 14px;
+      padding: 12px 24px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.1rem;
-      white-space: nowrap;
-      box-shadow:
-        0 0 20px rgba(255, 0, 0, 0.7),
-        0 0 40px rgba(255, 0, 0, 0.4),
-        inset 0 0 10px rgba(255, 100, 100, 0.3);
+      font-size: 1rem;
       transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
     }
 
-    a.button:hover {
-      background: rgb(180, 0, 10);
-      transform: scale(1.06);
-      box-shadow:
-        0 0 30px rgba(255, 60, 60, 0.9),
-        0 0 80px rgba(255, 60, 60, 0.5),
-        inset 0 0 20px rgba(255, 150, 150, 0.3);
+    .button:hover {
+      background: #b00000;
+      transform: scale(1.05);
     }
 
     .countdown {
+      margin-top: 2rem;
       font-size: 1.2rem;
       font-weight: 600;
-      color: #ff4c4c;
-      text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      color: #ffaaaa;
     }
 
-    @media (max-width: 600px) {
-      .content {
-        width: 100%;
-      }
-      .countdown {
-        font-size: 1rem;
-      }
-      a.button {
-        font-size: 1rem;
-        padding: 12px 20px;
+    @media (max-height: 800px) {
+      body {
+        transform: scale(0.9);
       }
     }
+
+    @media (max-height: 700px) {
+      body {
+        transform: scale(0.8);
+      }
+    }
+
   </style>
 </head>
 <body>
   <main class="content">
-    <div class="countdown" id="countdown">⏳ Countdown läuft...</div>
     <div class="image-wrapper">
       <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
     </div>
+
+    <div class="countdown" id="countdown">
+      ⏳ Das Fest startet in ...
+    </div>
+
     <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
       📥 Festprogramm als PDF herunterladen
     </a>
   </main>
 
   <script>
-    const countdownEl = document.getElementById('countdown');
+    const countdown = document.getElementById("countdown");
     const targetDate = new Date("2025-07-04T17:00:00");
 
     function updateCountdown() {
@@ -116,7 +110,7 @@
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        countdownEl.innerHTML = "🚒 Das Fest hat begonnen!";
+        countdown.textContent = "🎉 Das Fest hat begonnen!";
         return;
       }
 
@@ -125,12 +119,7 @@
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      countdownEl.innerHTML = `
-        ⏳ Noch <strong>${days} Tage</strong>, 
-        <strong>${hours} Std</strong>, 
-        <strong>${minutes} Min</strong>, 
-        <strong>${seconds} Sek</strong> bis zum Festbeginn
-      `;
+      countdown.textContent = `⏳ Noch ${days} Tage, ${hours} Std, ${minutes} Min, ${seconds} Sek`;
     }
 
     updateCountdown();
