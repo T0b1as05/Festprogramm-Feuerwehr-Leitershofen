@@ -2,74 +2,58 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🔥 Festprogramm Feuerwehr Leitershofen 🔥</title>
   <link rel="icon" href="favicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
-    html, body {
-      height: 100%;
-      background: #1e1e1e;
+    body {
+      margin: 0;
+      padding: 0;
       font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+      color: white;
       overflow: hidden;
     }
 
-    body.show-main {
-      overflow-y: auto;
-    }
-
+    /* INTRO */
     .intro {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, #2c2c2c 0%, #1e1e1e 100%);
-      color: white;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      animation: fadeOut 1s ease-in-out 2s forwards;
+      animation: fadeOut 1s ease forwards;
+      animation-delay: 2s;
     }
 
     .intro img {
-      width: 200px;
+      max-width: 50vw;
       height: auto;
-      margin-bottom: 1.2rem;
-      animation: popIn 1s ease-out;
+      animation: scaleIn 1.2s ease-out forwards;
     }
 
     .intro h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      animation: popIn 1s ease-out 0.4s both;
+      font-size: 3rem;
+      margin: 1rem 0 0;
+      color: #ff1e1e;
+      animation: slideInUp 1.2s ease-out forwards;
     }
 
     .intro p {
-      font-size: 1.2rem;
-      opacity: 0.8;
-      margin-top: 0.5rem;
-      animation: popIn 1s ease-out 0.8s both;
-    }
-
-    @keyframes popIn {
-      from {
-        opacity: 0;
-        transform: scale(0.85);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      margin-top: 0.3rem;
+      font-size: 1.5rem;
+      color: #ddd;
+      animation: fadeIn 2s ease-out forwards;
     }
 
     @keyframes fadeOut {
@@ -79,44 +63,57 @@
       }
     }
 
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0.6);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInUp {
+      0% {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* MAIN CONTENT */
     main {
       opacity: 0;
-      animation: fadeInMain 1s ease-in-out 3s forwards;
-      padding: 2rem 1rem;
-      background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
-      min-height: 100vh;
+      animation: showMain 1s ease forwards;
+      animation-delay: 2.1s;
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: white;
+      padding: 2rem 1rem;
+      min-height: 100vh;
     }
 
-    @keyframes fadeInMain {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes showMain {
+      to { opacity: 1; }
     }
 
     .image-wrapper {
       position: relative;
-      display: inline-block;
       border-radius: 24px;
       overflow: hidden;
-      box-shadow:
-        0 0 40px rgba(255, 0, 0, 0.4),
-        0 0 80px rgba(255, 0, 0, 0.2);
-      animation: pulseSlow 6s infinite ease-in-out;
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),
+                  0 0 80px rgba(255, 0, 0, 0.2);
       margin-bottom: 1.5rem;
-    }
-
-    @keyframes pulseSlow {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.01); }
+      animation: pulse 3s infinite;
     }
 
     .image-wrapper img {
@@ -124,6 +121,12 @@
       max-height: 80vh;
       border-radius: 24px;
       display: block;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 40px rgba(255, 0, 0, 0.4); }
+      50% { transform: scale(1.015); box-shadow: 0 0 60px rgba(255, 60, 60, 0.6); }
+      100% { transform: scale(1); box-shadow: 0 0 40px rgba(255, 0, 0, 0.4); }
     }
 
     .button {
@@ -134,50 +137,38 @@
       text-decoration: none;
       font-weight: 700;
       font-size: 1.1rem;
-      box-shadow:
-        0 0 20px rgba(255, 0, 0, 0.7),
-        0 0 40px rgba(255, 0, 0, 0.4),
-        inset 0 0 10px rgba(255, 100, 100, 0.3);
+      white-space: nowrap;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7),
+                  0 0 40px rgba(255, 0, 0, 0.4),
+                  inset 0 0 10px rgba(255, 100, 100, 0.3);
       transition: all 0.3s ease;
+      margin-top: 1rem;
     }
 
     .button:hover {
       background: rgb(180, 0, 10);
       transform: scale(1.06);
-      box-shadow:
-        0 0 30px rgba(255, 60, 60, 0.9),
-        0 0 80px rgba(255, 60, 60, 0.5),
-        inset 0 0 20px rgba(255, 150, 150, 0.3);
-    }
-
-    .date {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #ff4c4c;
-      text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+      box-shadow: 0 0 30px rgba(255, 60, 60, 0.9),
+                  0 0 80px rgba(255, 60, 60, 0.5),
+                  inset 0 0 20px rgba(255, 150, 150, 0.3);
     }
 
     @media (max-width: 600px) {
-      main {
-        padding: 1rem 1rem;
+      .intro img {
+        max-width: 80vw;
+      }
+
+      .intro h1 {
+        font-size: 2.2rem;
+      }
+
+      .intro p {
+        font-size: 1.2rem;
       }
 
       .button {
         font-size: 1rem;
         padding: 12px 20px;
-      }
-
-      .intro img {
-        width: 160px;
-      }
-
-      .intro h1 {
-        font-size: 1.8rem;
-      }
-
-      .intro p {
-        font-size: 1rem;
       }
     }
   </style>
@@ -185,12 +176,11 @@
 <body>
   <div class="intro">
     <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
-    <h1>150 Jahre Feuerwehr Leitershofen</h1>
+    <h1>150 Jahre</h1>
     <p>04.07.–06.07.2025</p>
   </div>
 
   <main>
-    <div class="date">04.07.–06.07.2025</div>
     <div class="image-wrapper">
       <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
     </div>
