@@ -3,138 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>150 Jahre Feuerwehr Leitershofen 🚒</title>
+  <title>150 Jahre Feuerwehr Leitershofen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --bg: #121212;
+      --red: #d60000;
+      --white: #ffffff;
+      --gray: #e0e0e0;
     }
 
     body {
       margin: 0;
-      background: radial-gradient(ellipse at center, #1a1a1a 0%, #000 100%);
-      color: #fff;
+      padding: 0;
+      background: var(--bg);
+      color: var(--white);
       font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+      line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(135deg, #ff0000, #8b0000);
-      padding: 3rem 2rem;
+      background-color: #1f1f1f;
+      padding: 3rem 1rem 2rem;
       text-align: center;
-      color: white;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      border-bottom: 2px solid var(--red);
     }
 
     header h1 {
-      font-family: 'Russo One', sans-serif;
-      font-size: 3rem;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--white);
       margin: 0;
     }
 
     header p {
-      font-size: 1.2rem;
+      color: var(--gray);
+      font-size: 1.1rem;
       margin-top: 0.5rem;
     }
 
-    .program-section {
+    .container {
       max-width: 800px;
-      margin: 3rem auto;
+      margin: 2rem auto;
       padding: 0 1rem;
     }
 
-    .day {
-      margin-bottom: 2.5rem;
-    }
-
-    .day h2 {
-      color: #ff4747;
+    h2 {
       font-size: 1.5rem;
-      border-bottom: 2px solid #ff4747;
+      color: var(--red);
+      border-bottom: 1px solid var(--red);
       padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
+      margin-top: 2.5rem;
     }
 
     .event {
-      margin-left: 1rem;
       padding: 0.5rem 0;
-      border-left: 2px solid #ff7b7b;
+      border-left: 3px solid #333;
+      margin-left: 1rem;
       padding-left: 1rem;
-      position: relative;
-    }
-
-    .event::before {
-      content: "🔥";
-      position: absolute;
-      left: -1.2rem;
-      top: 0.5rem;
     }
 
     .event time {
-      font-weight: bold;
-      color: #ffd3d3;
+      font-weight: 600;
+      color: var(--gray);
+      display: inline-block;
+      min-width: 90px;
     }
 
     .download {
-      display: block;
       text-align: center;
-      margin: 3rem auto;
+      margin: 3rem 0;
     }
 
     .download a {
-      background: #ff1e1e;
-      padding: 1rem 2rem;
-      color: white;
-      font-weight: bold;
-      border-radius: 10px;
+      display: inline-block;
+      background-color: var(--red);
+      color: var(--white);
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
       text-decoration: none;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-      transition: transform 0.3s ease;
+      font-weight: 600;
+      transition: background 0.2s ease;
     }
 
     .download a:hover {
-      transform: scale(1.05);
-      background: #cc0000;
+      background-color: #b00000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>150 Jahre Feuerwehr Leitershofen</h1>
-    <p>Feier mit uns vom 4. bis 6. Juli 2025</p>
+    <p>Festprogramm vom 4. bis 6. Juli 2025</p>
   </header>
 
-  <section class="program-section">
-    <div class="day">
-      <h2>Freitag 04.07.2025</h2>
-      <div class="event"><time>17:00 Uhr</time> – Öffnung des Straßenfestes</div>
-      <div class="event"><time>19:00 Uhr</time> – Livemusik mit „Trumpet-Band“</div>
-    </div>
+  <main class="container">
+    <h2>Freitag · 04.07.2025</h2>
+    <div class="event"><time>17:00 Uhr</time> Öffnung des Straßenfestes</div>
+    <div class="event"><time>19:00 Uhr</time> Livemusik mit „Trumpet-Band“</div>
 
-    <div class="day">
-      <h2>Samstag 05.07.2025</h2>
-      <div class="event"><time>11:30 Uhr</time> – Eröffnung</div>
-      <div class="event"><time>13:00 Uhr</time> – Vorführung Hundestaffel</div>
-      <div class="event"><time>14:00 Uhr</time> – Beginn Tauchcontainer</div>
-      <div class="event"><time>15:00 Uhr</time> – Vorführung Schule Leitershofen</div>
-      <div class="event"><time>15:30 Uhr</time> – Feuerwehrolympiade</div>
-      <div class="event"><time>18:00 Uhr</time> – Siegerehrung</div>
-      <div class="event"><time>19:00 Uhr</time> – Livemusik mit „Die Lumpenbacher“</div>
-    </div>
+    <h2>Samstag · 05.07.2025</h2>
+    <div class="event"><time>11:30 Uhr</time> Eröffnung</div>
+    <div class="event"><time>13:00 Uhr</time> Vorführung Hundestaffel</div>
+    <div class="event"><time>14:00 Uhr</time> Beginn Tauchcontainer</div>
+    <div class="event"><time>15:00 Uhr</time> Vorführung Schule Leitershofen</div>
+    <div class="event"><time>15:30 Uhr</time> Feuerwehrolympiade</div>
+    <div class="event"><time>18:00 Uhr</time> Siegerehrung</div>
+    <div class="event"><time>19:00 Uhr</time> Livemusik mit „Die Lumpenbacher“</div>
 
-    <div class="day">
-      <h2>Sonntag 06.07.2025</h2>
-      <div class="event"><time>10:30 Uhr</time> – Festgottesdienst</div>
-      <div class="event"><time>11:30 Uhr</time> – Mittagessen (Spanferkel)</div>
-      <div class="event"><time>13:30 Uhr</time> – Aufstellung zum Festumzug</div>
-      <div class="event"><time>14:00 Uhr</time> – Beginn Festumzug</div>
-      <div class="event"><time>15:30 Uhr</time> – Einzug der Fahnen + Musik</div>
-    </div>
-  </section>
+    <h2>Sonntag · 06.07.2025</h2>
+    <div class="event"><time>10:30 Uhr</time> Festgottesdienst</div>
+    <div class="event"><time>11:30 Uhr</time> Mittagessen (Spanferkel)</div>
+    <div class="event"><time>13:30 Uhr</time> Aufstellung zum Festumzug</div>
+    <div class="event"><time>14:00 Uhr</time> Beginn Festumzug</div>
+    <div class="event"><time>15:30 Uhr</time> Einzug der Fahnen & Musikkapelle</div>
+  </main>
 
   <div class="download">
-    <a href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>📥 PDF herunterladen</a>
+    <a href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>📄 Festprogramm als PDF</a>
   </div>
+
+  <footer>
+    © 2025 Freiwillige Feuerwehr Leitershofen
+  </footer>
+
 </body>
 </html>
