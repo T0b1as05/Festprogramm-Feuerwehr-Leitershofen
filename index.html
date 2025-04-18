@@ -3,12 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🔥 Festprogramm Feuerwehr Leitershofen 🔥</title>
+  <title>150 Jahre Feuerwehr Leitershofen 🚒</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.png" type="image/png" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -16,118 +13,128 @@
 
     body {
       margin: 0;
-      padding: 2rem 1rem;
-      background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+      background: radial-gradient(ellipse at center, #1a1a1a 0%, #000 100%);
+      color: #fff;
       font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      color: white;
-      animation: fadeIn 1.2s ease-in-out;
       overflow-x: hidden;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.97);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .content {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .image-wrapper {
-      position: relative;
-      display: inline-block;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow:
-        0 0 40px rgba(255, 0, 0, 0.4),
-        0 0 80px rgba(255, 0, 0, 0.2);
-    }
-
-    .image-wrapper::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
-      transform: skewX(-20deg);
-      animation: shimmer 2.5s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { left: -75%; }
-      100% { left: 125%; }
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-      max-height: 80vh;
-      height: auto;
-      border-radius: 24px;
-    }
-
-    a.button {
-      background: rgb(218, 23, 28);
+    header {
+      background: linear-gradient(135deg, #ff0000, #8b0000);
+      padding: 3rem 2rem;
+      text-align: center;
       color: white;
-      padding: 16px 32px;
-      border-radius: 14px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+
+    header h1 {
+      font-family: 'Russo One', sans-serif;
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .program-section {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+
+    .day {
+      margin-bottom: 2.5rem;
+    }
+
+    .day h2 {
+      color: #ff4747;
+      font-size: 1.5rem;
+      border-bottom: 2px solid #ff4747;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .event {
+      margin-left: 1rem;
+      padding: 0.5rem 0;
+      border-left: 2px solid #ff7b7b;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .event::before {
+      content: "🔥";
+      position: absolute;
+      left: -1.2rem;
+      top: 0.5rem;
+    }
+
+    .event time {
+      font-weight: bold;
+      color: #ffd3d3;
+    }
+
+    .download {
+      display: block;
+      text-align: center;
+      margin: 3rem auto;
+    }
+
+    .download a {
+      background: #ff1e1e;
+      padding: 1rem 2rem;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
       text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1rem;
-      white-space: nowrap;
-      box-shadow:
-        0 0 20px rgba(255, 0, 0, 0.7),
-        0 0 40px rgba(255, 0, 0, 0.4),
-        inset 0 0 10px rgba(255, 100, 100, 0.3);
-      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+      transition: transform 0.3s ease;
     }
 
-    a.button:hover {
-      background: rgb(180, 0, 10);
-      transform: scale(1.06);
-      box-shadow:
-        0 0 30px rgba(255, 60, 60, 0.9),
-        0 0 80px rgba(255, 60, 60, 0.5),
-        inset 0 0 20px rgba(255, 150, 150, 0.3);
-    }
-
-    @media (max-width: 600px) {
-      .content {
-        margin-top: 1rem;
-        gap: 1rem;
-      }
-
-      a.button {
-        font-size: 1rem;
-        padding: 12px 20px;
-      }
+    .download a:hover {
+      transform: scale(1.05);
+      background: #cc0000;
     }
   </style>
 </head>
 <body>
-  <main class="content">
-    <div class="image-wrapper">
-      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
+  <header>
+    <h1>150 Jahre Feuerwehr Leitershofen</h1>
+    <p>Feier mit uns vom 4. bis 6. Juli 2025</p>
+  </header>
+
+  <section class="program-section">
+    <div class="day">
+      <h2>Freitag 04.07.2025</h2>
+      <div class="event"><time>17:00 Uhr</time> – Öffnung des Straßenfestes</div>
+      <div class="event"><time>19:00 Uhr</time> – Livemusik mit „Trumpet-Band“</div>
     </div>
-    <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
-      📥 Festprogramm als PDF herunterladen
-    </a>
-  </main>
+
+    <div class="day">
+      <h2>Samstag 05.07.2025</h2>
+      <div class="event"><time>11:30 Uhr</time> – Eröffnung</div>
+      <div class="event"><time>13:00 Uhr</time> – Vorführung Hundestaffel</div>
+      <div class="event"><time>14:00 Uhr</time> – Beginn Tauchcontainer</div>
+      <div class="event"><time>15:00 Uhr</time> – Vorführung Schule Leitershofen</div>
+      <div class="event"><time>15:30 Uhr</time> – Feuerwehrolympiade</div>
+      <div class="event"><time>18:00 Uhr</time> – Siegerehrung</div>
+      <div class="event"><time>19:00 Uhr</time> – Livemusik mit „Die Lumpenbacher“</div>
+    </div>
+
+    <div class="day">
+      <h2>Sonntag 06.07.2025</h2>
+      <div class="event"><time>10:30 Uhr</time> – Festgottesdienst</div>
+      <div class="event"><time>11:30 Uhr</time> – Mittagessen (Spanferkel)</div>
+      <div class="event"><time>13:30 Uhr</time> – Aufstellung zum Festumzug</div>
+      <div class="event"><time>14:00 Uhr</time> – Beginn Festumzug</div>
+      <div class="event"><time>15:30 Uhr</time> – Einzug der Fahnen + Musik</div>
+    </div>
+  </section>
+
+  <div class="download">
+    <a href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>📥 PDF herunterladen</a>
+  </div>
 </body>
+</html>
