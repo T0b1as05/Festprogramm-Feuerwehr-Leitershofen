@@ -14,41 +14,65 @@
       padding: 0;
     }
 
-    body {
+    html, body {
+      width: 100%;
+      height: 100%;
       background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
       color: white;
       font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+
+    .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      overflow: hidden;
+      justify-content: space-between;
+      text-align: center;
+      padding: 1.5rem;
+      height: 100vh;
+      max-height: 100vh;
+      gap: 1.2rem;
+      transform: scale(1);
+      transform-origin: top center;
     }
 
-    .content {
-      max-width: 1000px;
-      text-align: center;
+    @media (min-height: 500px) and (max-height: 850px) {
+      .wrapper {
+        transform: scale(0.9);
+      }
+    }
+
+    @media (max-height: 500px) {
+      .wrapper {
+        transform: scale(0.8);
+      }
+    }
+
+    .countdown {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ffaaaa;
     }
 
     .image-wrapper {
-      position: relative;
-      display: inline-block;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+      max-height: 80%;
     }
 
-    img {
+    .image-wrapper img {
+      max-height: 100%;
       max-width: 100%;
-      height: auto;
       border-radius: 16px;
     }
 
     .button {
-      margin-top: 1.5rem;
-      display: inline-block;
       background: #d60000;
       color: white;
       padding: 12px 24px;
@@ -65,41 +89,22 @@
       transform: scale(1.05);
     }
 
-    .countdown {
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #ffaaaa;
-    }
-
-    @media (max-height: 800px) {
-      body {
-        transform: scale(0.9);
-      }
-    }
-
-    @media (max-height: 700px) {
-      body {
-        transform: scale(0.8);
-      }
-    }
-
   </style>
 </head>
 <body>
-  <main class="content">
-    <div class="image-wrapper">
-      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
-    </div>
-
+  <div class="wrapper">
     <div class="countdown" id="countdown">
       ⏳ Das Fest startet in ...
+    </div>
+
+    <div class="image-wrapper">
+      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
     </div>
 
     <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
       📥 Festprogramm als PDF herunterladen
     </a>
-  </main>
+  </div>
 
   <script>
     const countdown = document.getElementById("countdown");
