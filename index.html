@@ -80,6 +80,22 @@
       overflow: hidden;
       margin-bottom: 1.5rem;
       animation: pulseGlow 6s ease-in-out infinite;
+      box-shadow:
+        0 0 40px rgba(255, 0, 0, 0.4),
+        0 0 80px rgba(255, 0, 0, 0.2);
+    }
+
+    .image-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: skewX(-20deg);
+      animation: shimmer 2.5s infinite;
+      z-index: 2;
     }
 
     .image-wrapper img {
@@ -144,6 +160,11 @@
           0 0 28px rgba(255, 30, 30, 0.4),
           0 0 56px rgba(255, 30, 30, 0.2);
       }
+    }
+
+    @keyframes shimmer {
+      0% { left: -75%; }
+      100% { left: 125%; }
     }
 
     @media (max-width: 600px) {
