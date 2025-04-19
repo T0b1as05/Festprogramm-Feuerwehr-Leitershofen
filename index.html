@@ -12,11 +12,10 @@
       margin: 0;
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       height: 100%;
-      width: 100%;
       background-color: #000;
       font-family: 'Inter', sans-serif;
       color: white;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     body {
@@ -72,9 +71,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem 1rem;
-      min-height: 100vh;
+      justify-content: center;
+      height: 100vh;
       box-sizing: border-box;
+      padding: 1rem;
     }
 
     .image-wrapper {
@@ -83,10 +83,10 @@
       overflow: hidden;
       box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),
                   0 0 80px rgba(255, 0, 0, 0.2);
-      margin-bottom: 2rem;
       animation: pulse 6s infinite ease-in-out;
       width: 100%;
       max-width: 700px;
+      flex-shrink: 1;
     }
 
     .image-wrapper img {
@@ -102,6 +102,8 @@
       gap: 1rem;
       width: 100%;
       max-width: 400px;
+      margin-top: 1.2rem;
+      flex-shrink: 0;
     }
 
     .button {
@@ -201,14 +203,12 @@
     };
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich
+    setInterval(updateCountdown, 1000 * 60 * 60);
 
-    // Intro automatisch ausblenden
     setTimeout(() => {
       intro.classList.add("fade-out");
     }, 3000);
 
-    // Auch bei Klick ausblenden
     intro.addEventListener("click", () => {
       intro.classList.add("fade-out");
     });
