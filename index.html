@@ -1,64 +1,96 @@
-<!-- DER REST DEINES CODES BLEIBT UNVERÄNDERT BIS ZU </body> -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>150 Jahre Feuerwehr Leitershofen</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: black;
+      color: white;
+      overflow: auto;
+    }
 
-  <!-- Footer-Navigation -->
-  <div class="floating-menu">
-    <a class="menu-button" href="https://www.google.com/maps?q=Feuerhausstraße+Leitershofen+Stadtbergen" target="_blank">📍 Anfahrt</a>
-    <button class="menu-button" onclick="toggleContact()">❓ Fragen?</button>
-  </div>
+    #intro {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: opacity 1s ease;
+    }
 
-  <!-- Kontaktformular (versteckt) -->
-  <div id="contactFormOverlay" class="overlay">
-    <div class="form-container">
-      <h2>Fragen? Schreib uns!</h2>
-      <form action="mailto:tobias.aggensteiner@gmail.com" method="post" enctype="text/plain">
-        <input type="text" name="Name" placeholder="Dein Name" required />
-        <input type="email" name="E-Mail" placeholder="Deine E-Mail" required />
-        <textarea name="Nachricht" placeholder="Deine Nachricht" required></textarea>
-        <div class="form-buttons">
-          <button type="submit">Absenden</button>
-          <button type="button" onclick="toggleContact()">Abbrechen</button>
-        </div>
-      </form>
-    </div>
-  </div>
+    #intro.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
 
-  <script>
-    const intro = document.getElementById("intro");
-    const main = document.getElementById("mainContent");
-    const countdownEl = document.getElementById("countdown");
-    const festDate = new Date("2025-07-04T17:00:00");
+    #logo {
+      max-width: 80%;
+      height: auto;
+      filter: drop-shadow(0 0 20px red);
+      animation: pulse 2s infinite alternate;
+      cursor: pointer;
+    }
 
-    function updateCountdown() {
-      const now = new Date();
-      const diff = festDate - now;
-      if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
-      } else {
-        countdownEl.textContent = "Es ist so weit! 🎉";
+    @keyframes pulse {
+      from {
+        filter: drop-shadow(0 0 10px red);
+      }
+      to {
+        filter: drop-shadow(0 0 40px red);
       }
     }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich aktualisieren
-
-    function skipIntro() {
-      intro.classList.add("hide");
-      main.classList.add("visible");
+    #mainContent {
+      display: none;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    setTimeout(skipIntro, 3000);
-    intro.addEventListener("click", skipIntro);
-
-    function toggleContact() {
-      document.getElementById("contactFormOverlay").classList.toggle("show");
+    #mainContent.visible {
+      display: block;
     }
-  </script>
 
-  <style>
-    html, body {
-      /* Ändere overflow, um bei Bedarf scrollen zu können */
-      overflow: auto;
+    h1 {
+      font-size: 2.5rem;
+      color: #ff3333;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    #countdown {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #ff4d4d;
+      margin-bottom: 2rem;
+    }
+
+    /* Scrollbar Style */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #ff1e1e;
+      border-radius: 10px;
     }
 
     /* Navigationsleiste */
@@ -159,6 +191,95 @@
     .form-buttons button:hover {
       background-color: #b1000a;
     }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      #mainContent {
+        padding: 1rem;
+      }
+
+      .menu-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+      }
+    }
   </style>
+</head>
+<body>
+  <div id="intro">
+    <img src="logo.png" id="logo" alt="Logo der Feuerwehr Leitershofen" />
+  </div>
+
+  <div id="mainContent">
+    <div id="countdown"></div>
+
+    <div class="section">
+      <h1>150 Jahre Feuerwehr Leitershofen</h1>
+      <p>Herzlich willkommen auf unserer Festseite! Hier findest du alle Informationen rund um unser großes Jubiläum im Juli 2025. Wir feiern mit euch ein ganzes Wochenende – mit Musik, guter Verpflegung, einem Festumzug und vielem mehr.</p>
+    </div>
+
+    <div class="section">
+      <h2>Warum wir feiern</h2>
+      <p>Seit 150 Jahren stehen wir für Sicherheit, Zusammenhalt und Engagement in Leitershofen. Dieses besondere Jubiläum wollen wir mit der gesamten Bevölkerung feiern – mit einem unvergesslichen Festwochenende!</p>
+    </div>
+  </div>
+
+  <!-- Footer-Navigation -->
+  <div class="floating-menu">
+    <a class="menu-button" href="https://www.google.com/maps?q=Feuerhausstraße+Leitershofen+Stadtbergen" target="_blank">📍 Anfahrt</a>
+    <button class="menu-button" onclick="toggleContact()">❓ Fragen?</button>
+  </div>
+
+  <!-- Kontaktformular (versteckt) -->
+  <div id="contactFormOverlay" class="overlay">
+    <div class="form-container">
+      <h2>Fragen? Schreib uns!</h2>
+      <form action="mailto:tobias.aggensteiner@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="Name" placeholder="Dein Name" required />
+        <input type="email" name="E-Mail" placeholder="Deine E-Mail" required />
+        <textarea name="Nachricht" placeholder="Deine Nachricht" required></textarea>
+        <div class="form-buttons">
+          <button type="submit">Absenden</button>
+          <button type="button" onclick="toggleContact()">Abbrechen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const intro = document.getElementById("intro");
+    const main = document.getElementById("mainContent");
+    const countdownEl = document.getElementById("countdown");
+    const festDate = new Date("2025-07-04T17:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = festDate - now;
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
+      } else {
+        countdownEl.textContent = "Es ist so weit! 🎉";
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000 * 60 * 60);
+
+    function skipIntro() {
+      intro.classList.add("hide");
+      main.classList.add("visible");
+    }
+
+    setTimeout(skipIntro, 3000);
+    intro.addEventListener("click", skipIntro);
+
+    function toggleContact() {
+      document.getElementById("contactFormOverlay").classList.toggle("show");
+    }
+  </script>
 </body>
 </html>
