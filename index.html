@@ -10,18 +10,18 @@
   <style>
     html, body {
       margin: 0;
-      padding: env(safe-area-inset);
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       height: 100%;
       width: 100%;
       background-color: #000;
       overflow: hidden;
       position: fixed;
-      font-family: 'Inter', sans-serif;
-      color: white;
     }
 
     body {
       background: linear-gradient(to bottom, #000000 0%, #1a1a1a 100%);
+      font-family: 'Inter', sans-serif;
+      color: white;
     }
 
     .intro, main {
@@ -39,12 +39,11 @@
       justify-content: center;
       z-index: 1000;
       text-align: center;
-      transition: opacity 0.8s ease;
+      cursor: pointer;
     }
 
-    .intro.fade-out {
-      opacity: 0;
-      pointer-events: none;
+    .intro.hide {
+      animation: fadeOut 0.8s ease forwards;
     }
 
     .intro img {
@@ -76,14 +75,16 @@
 
     main {
       opacity: 0;
-      animation: showMain 1s ease forwards;
-      animation-delay: 3.1s;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem;
       min-height: 100vh;
       box-sizing: border-box;
+    }
+
+    main.visible {
+      animation: showMain 0.8s ease forwards;
     }
 
     .image-wrapper {
@@ -140,6 +141,10 @@
                   inset 0 0 20px rgba(255, 150, 150, 0.3);
     }
 
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
     @keyframes scaleIn {
       0% { transform: scale(0.6); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
@@ -192,7 +197,7 @@
     <p id="countdown"></p>
   </div>
 
-  <main>
+  <main id="mainContent">
     <div class="image-wrapper">
       <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
     </div>
@@ -202,11 +207,12 @@
   </main>
 
   <script>
+    const intro = document.getElementById("intro");
+    const main = document.getElementById("mainContent");
     const countdownEl = document.getElementById("countdown");
     const festDate = new Date("2025-07-04T17:00:00");
-    const introEl = document.getElementById("intro");
 
-    const updateCountdown = () => {
+    function updateCountdown() {
       const now = new Date();
       const diff = festDate - now;
       if (diff > 0) {
@@ -215,20 +221,18 @@
       } else {
         countdownEl.textContent = "Es ist so weit! 🎉";
       }
-    };
+    }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // jede Stunde aktualisieren
+    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich aktualisieren
 
-    // Automatisch ausblenden nach 3 Sekunden
-    setTimeout(() => {
-      introEl.classList.add("fade-out");
-    }, 3000);
+    function skipIntro() {
+      intro.classList.add("hide");
+      main.classList.add("visible");
+    }
 
-    // Bei Klick sofort überspringen
-    introEl.addEventListener("click", () => {
-      introEl.classList.add("fade-out");
-    });
+    setTimeout(skipIntro, 3000);
+    intro.addEventListener("click", skipIntro);
   </script>
 </body>
 </html>
