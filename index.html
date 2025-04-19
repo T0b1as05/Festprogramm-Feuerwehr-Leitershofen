@@ -125,6 +125,7 @@
       text-decoration: none;
       font-weight: 700;
       font-size: 1.1rem;
+      white-space: nowrap; /* ← verhindert Zeilenumbruch */
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.7),
                   0 0 40px rgba(255, 0, 0, 0.4),
                   inset 0 0 10px rgba(255, 100, 100, 0.3);
@@ -185,7 +186,10 @@
       .intro h1 { font-size: 2.6rem; }
       .intro p { font-size: 1.6rem; }
       #countdown { font-size: 1rem; }
-      .button { font-size: 1rem; padding: 12px 20px; }
+      .button {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
     }
   </style>
 </head>
@@ -224,7 +228,7 @@
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich aktualisieren
+    setInterval(updateCountdown, 1000 * 60 * 60);
 
     function skipIntro() {
       intro.classList.add("hide");
