@@ -10,16 +10,8 @@
   <style>
     html, body {
       margin: 0;
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-      height: 100%;
-      width: 100%;
+      padding: 0;
       background-color: #000;
-      overflow: hidden;
-      position: fixed;
-    }
-
-    body {
-      background: linear-gradient(to bottom, #000000 0%, #1a1a1a 100%);
       font-family: 'Inter', sans-serif;
       color: white;
     }
@@ -37,18 +29,19 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
       text-align: center;
+      z-index: 1000;
       cursor: pointer;
+      transition: opacity 0.8s ease;
     }
 
-    .intro.hide {
-      animation: fadeOut 0.8s ease forwards;
+    .intro.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .intro img {
       max-width: 50vw;
-      height: auto;
       animation: scaleIn 1.2s ease-out forwards;
     }
 
@@ -59,42 +52,33 @@
       animation: slideInUp 1.2s ease-out forwards;
     }
 
-    .intro p {
-      font-size: 2rem;
+    .intro p, #countdown {
+      font-size: 1.6rem;
       margin-top: 0.5rem;
       color: #ddd;
       animation: fadeIn 2s ease-out forwards;
     }
 
-    #countdown {
-      font-size: 1.8rem;
-      color: #aaa;
-      margin-top: 0.5rem;
-      animation: fadeIn 2.5s ease-out forwards;
-    }
-
     main {
       opacity: 0;
+      transition: opacity 0.6s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem;
-      min-height: 100vh;
-      box-sizing: border-box;
     }
 
     main.visible {
-      animation: showMain 0.8s ease forwards;
+      opacity: 1;
     }
 
     .image-wrapper {
       position: relative;
       border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),
-                  0 0 80px rgba(255, 0, 0, 0.2);
-      margin-bottom: 1.5rem;
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.4), 0 0 80px rgba(255, 0, 0, 0.2);
       animation: pulse 6s infinite ease-in-out;
+      margin-bottom: 2rem;
     }
 
     .image-wrapper::after {
@@ -112,7 +96,6 @@
 
     .image-wrapper img {
       max-width: 100%;
-      max-height: 80vh;
       border-radius: 24px;
       display: block;
     }
@@ -125,24 +108,54 @@
       text-decoration: none;
       font-weight: 700;
       font-size: 1.1rem;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7),
-                  0 0 40px rgba(255, 0, 0, 0.4),
-                  inset 0 0 10px rgba(255, 100, 100, 0.3);
-      transition: all 0.3s ease;
-      margin-top: 1rem;
-      animation: pulse 6s infinite ease-in-out;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7), 0 0 40px rgba(255, 0, 0, 0.4), inset 0 0 10px rgba(255, 100, 100, 0.3);
+      margin: 1rem 0;
+      display: inline-block;
     }
 
-    .button:hover {
-      background: rgb(180, 0, 10);
-      transform: scale(1.06);
-      box-shadow: 0 0 30px rgba(255, 60, 60, 0.9),
-                  0 0 80px rgba(255, 60, 60, 0.5),
-                  inset 0 0 20px rgba(255, 150, 150, 0.3);
+    .tabs {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 600px;
     }
 
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .tab-buttons button {
+      background: #222;
+      color: white;
+      border: 1px solid #444;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-buttons button.active {
+      background: #d00;
+      border-color: #f33;
+    }
+
+    .tab-content {
+      background: #111;
+      padding: 1rem;
+      border-radius: 14px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+
+    .map {
+      margin-top: 3rem;
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
     }
 
     @keyframes scaleIn {
@@ -160,10 +173,6 @@
       100% { opacity: 1; }
     }
 
-    @keyframes showMain {
-      to { opacity: 1; }
-    }
-
     @keyframes shimmer {
       0% { left: -75%; }
       100% { left: 125%; }
@@ -179,14 +188,6 @@
                     0 0 50px rgba(255, 0, 0, 0.25);
       }
     }
-
-    @media (max-width: 600px) {
-      .intro img { max-width: 80vw; }
-      .intro h1 { font-size: 2.6rem; }
-      .intro p { font-size: 1.6rem; }
-      #countdown { font-size: 1rem; }
-      .button { font-size: 1rem; padding: 12px 20px; }
-    }
   </style>
 </head>
 <body>
@@ -201,14 +202,37 @@
     <div class="image-wrapper">
       <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
     </div>
+
     <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
       📥 Festprogramm als PDF herunterladen
     </a>
+
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="freitag">Freitag</button>
+        <button class="tab-btn" data-tab="samstag">Samstag</button>
+        <button class="tab-btn" data-tab="sonntag">Sonntag</button>
+      </div>
+      <div class="tab-content" id="tab-content">
+        <strong>Freitag, 04.07.:</strong><br>
+        ▸ Festauftakt mit Partyband<br>
+        ▸ Fassanstich<br>
+        ▸ Barbetrieb
+      </div>
+    </div>
+
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.019073080365!2d10.834582115650527!3d48.35610297923964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e62c4419d342f%3A0x4059d9d3f2c38a0!2sFeuerwehr%20Leitershofen!5e0!3m2!1sde!2sde!4v1713438400000"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
   </main>
 
   <script>
     const intro = document.getElementById("intro");
-    const main = document.getElementById("mainContent");
+    const mainContent = document.getElementById("mainContent");
+
     const countdownEl = document.getElementById("countdown");
     const festDate = new Date("2025-07-04T17:00:00");
 
@@ -217,22 +241,38 @@
       const diff = festDate - now;
       if (diff > 0) {
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        countdownEl.textContent = `Noch ${days} Tage, ${hours} Std, ${minutes} Min`;
       } else {
         countdownEl.textContent = "Es ist so weit! 🎉";
       }
     }
-
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich aktualisieren
+    setInterval(updateCountdown, 60000);
 
-    function skipIntro() {
-      intro.classList.add("hide");
-      main.classList.add("visible");
-    }
+    intro.addEventListener("click", () => {
+      intro.classList.add("hidden");
+      mainContent.classList.add("visible");
+    });
 
-    setTimeout(skipIntro, 3000);
-    intro.addEventListener("click", skipIntro);
+    // Tabs
+    const tabs = document.querySelectorAll(".tab-btn");
+    const content = document.getElementById("tab-content");
+
+    const tabData = {
+      freitag: `<strong>Freitag, 04.07.:</strong><br>▸ Festauftakt mit Partyband<br>▸ Fassanstich<br>▸ Barbetrieb`,
+      samstag: `<strong>Samstag, 05.07.:</strong><br>▸ Festgottesdienst<br>▸ Umzug<br>▸ Blasmusikabend`,
+      sonntag: `<strong>Sonntag, 06.07.:</strong><br>▸ Frühschoppen<br>▸ Kinderprogramm<br>▸ Festausklang`
+    };
+
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabs.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        content.innerHTML = tabData[btn.dataset.tab];
+      });
+    });
   </script>
 </body>
 </html>
