@@ -14,14 +14,14 @@
       height: 100%;
       width: 100%;
       background-color: #000;
-      overflow: hidden;
+      overflow: hidden; /* Wird später bei Bedarf aufgehoben */
       position: fixed;
+      font-family: 'Inter', sans-serif;
+      color: white;
     }
 
     body {
       background: linear-gradient(to bottom, #000000 0%, #1a1a1a 100%);
-      font-family: 'Inter', sans-serif;
-      color: white;
     }
 
     .intro, main {
@@ -125,13 +125,13 @@
       text-decoration: none;
       font-weight: 700;
       font-size: 1.1rem;
-      white-space: nowrap; /* ← verhindert Zeilenumbruch */
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.7),
                   0 0 40px rgba(255, 0, 0, 0.4),
                   inset 0 0 10px rgba(255, 100, 100, 0.3);
       transition: all 0.3s ease;
       margin-top: 1rem;
       animation: pulse 6s infinite ease-in-out;
+      white-space: nowrap;
     }
 
     .button:hover {
@@ -186,10 +186,7 @@
       .intro h1 { font-size: 2.6rem; }
       .intro p { font-size: 1.6rem; }
       #countdown { font-size: 1rem; }
-      .button {
-        font-size: 1rem;
-        padding: 12px 20px;
-      }
+      .button { font-size: 1rem; padding: 12px 20px; }
     }
   </style>
 </head>
@@ -228,11 +225,25 @@
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60);
+    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich
 
     function skipIntro() {
       intro.classList.add("hide");
       main.classList.add("visible");
+
+      // 👇 Scrollbarkeit nur aktivieren, wenn nötig
+      setTimeout(() => {
+        const body = document.body;
+        const html = document.documentElement;
+        const totalHeight = Math.max(
+          body.scrollHeight, body.offsetHeight,
+          html.clientHeight, html.scrollHeight, html.offsetHeight
+        );
+        if (totalHeight > window.innerHeight) {
+          document.body.style.overflow = "auto";
+          document.body.style.position = "relative"; // fix aufheben
+        }
+      }, 800); // nach Fade-Out
     }
 
     setTimeout(skipIntro, 3000);
