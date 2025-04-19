@@ -10,18 +10,18 @@
   <style>
     html, body {
       margin: 0;
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      padding: env(safe-area-inset);
       height: 100%;
       width: 100%;
       background-color: #000;
       overflow: hidden;
       position: fixed;
+      font-family: 'Inter', sans-serif;
+      color: white;
     }
 
     body {
       background: linear-gradient(to bottom, #000000 0%, #1a1a1a 100%);
-      font-family: 'Inter', sans-serif;
-      color: white;
     }
 
     .intro, main {
@@ -38,9 +38,13 @@
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      animation: fadeOut 1s ease forwards;
-      animation-delay: 3s;
       text-align: center;
+      transition: opacity 0.8s ease;
+    }
+
+    .intro.fade-out {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .intro img {
@@ -136,10 +140,6 @@
                   inset 0 0 20px rgba(255, 150, 150, 0.3);
     }
 
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
     @keyframes scaleIn {
       0% { transform: scale(0.6); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
@@ -185,7 +185,7 @@
   </style>
 </head>
 <body>
-  <div class="intro">
+  <div class="intro" id="intro">
     <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
     <h1>150 Jahre</h1>
     <p>04.07. – 06.07.2025</p>
@@ -204,6 +204,8 @@
   <script>
     const countdownEl = document.getElementById("countdown");
     const festDate = new Date("2025-07-04T17:00:00");
+    const introEl = document.getElementById("intro");
+
     const updateCountdown = () => {
       const now = new Date();
       const diff = festDate - now;
@@ -214,8 +216,19 @@
         countdownEl.textContent = "Es ist so weit! 🎉";
       }
     };
+
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich aktualisieren
+    setInterval(updateCountdown, 1000 * 60 * 60); // jede Stunde aktualisieren
+
+    // Automatisch ausblenden nach 3 Sekunden
+    setTimeout(() => {
+      introEl.classList.add("fade-out");
+    }, 3000);
+
+    // Bei Klick sofort überspringen
+    introEl.addEventListener("click", () => {
+      introEl.classList.add("fade-out");
+    });
   </script>
 </body>
 </html>
