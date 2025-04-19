@@ -1,211 +1,26 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
-  <title>🔥 Festprogramm 🔥</title>
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    html, body {
-      margin: 0;
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-      height: 100%;
-      width: 100%;
-      background-color: #000;
-      overflow: hidden; /* Wird später bei Bedarf aufgehoben */
-      position: fixed;
-      font-family: 'Inter', sans-serif;
-      color: white;
-    }
+<!-- DER REST DEINES CODES BLEIBT UNVERÄNDERT BIS ZU </body> -->
 
-    body {
-      background: linear-gradient(to bottom, #000000 0%, #1a1a1a 100%);
-    }
-
-    .intro, main {
-      position: relative;
-      z-index: 1;
-    }
-
-    .intro {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: black;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .intro.hide {
-      animation: fadeOut 0.8s ease forwards;
-    }
-
-    .intro img {
-      max-width: 50vw;
-      height: auto;
-      animation: scaleIn 1.2s ease-out forwards;
-    }
-
-    .intro h1 {
-      font-size: 3.5rem;
-      margin: 1rem 0 0;
-      color: #ff1e1e;
-      animation: slideInUp 1.2s ease-out forwards;
-    }
-
-    .intro p {
-      font-size: 2rem;
-      margin-top: 0.5rem;
-      color: #ddd;
-      animation: fadeIn 2s ease-out forwards;
-    }
-
-    #countdown {
-      font-size: 1.8rem;
-      color: #aaa;
-      margin-top: 0.5rem;
-      animation: fadeIn 2.5s ease-out forwards;
-    }
-
-    main {
-      opacity: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-
-    main.visible {
-      animation: showMain 0.8s ease forwards;
-    }
-
-    .image-wrapper {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),
-                  0 0 80px rgba(255, 0, 0, 0.2);
-      margin-bottom: 1.5rem;
-      animation: pulse 6s infinite ease-in-out;
-    }
-
-    .image-wrapper::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
-      transform: skewX(-20deg);
-      animation: shimmer 2.5s infinite;
-      pointer-events: none;
-    }
-
-    .image-wrapper img {
-      max-width: 100%;
-      max-height: 80vh;
-      border-radius: 24px;
-      display: block;
-    }
-
-    .button {
-      background: rgb(218, 23, 28);
-      color: white;
-      padding: 16px 32px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7),
-                  0 0 40px rgba(255, 0, 0, 0.4),
-                  inset 0 0 10px rgba(255, 100, 100, 0.3);
-      transition: all 0.3s ease;
-      margin-top: 1rem;
-      animation: pulse 6s infinite ease-in-out;
-      white-space: nowrap;
-    }
-
-    .button:hover {
-      background: rgb(180, 0, 10);
-      transform: scale(1.06);
-      box-shadow: 0 0 30px rgba(255, 60, 60, 0.9),
-                  0 0 80px rgba(255, 60, 60, 0.5),
-                  inset 0 0 20px rgba(255, 150, 150, 0.3);
-    }
-
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
-    @keyframes scaleIn {
-      0% { transform: scale(0.6); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes slideInUp {
-      0% { transform: translateY(30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes showMain {
-      to { opacity: 1; }
-    }
-
-    @keyframes shimmer {
-      0% { left: -75%; }
-      100% { left: 125%; }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow: 0 0 20px rgba(255, 0, 0, 0.3),
-                    0 0 40px rgba(255, 0, 0, 0.15);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(255, 0, 0, 0.5),
-                    0 0 50px rgba(255, 0, 0, 0.25);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .intro img { max-width: 80vw; }
-      .intro h1 { font-size: 2.6rem; }
-      .intro p { font-size: 1.6rem; }
-      #countdown { font-size: 1rem; }
-      .button { font-size: 1rem; padding: 12px 20px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="intro" id="intro">
-    <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
-    <h1>150 Jahre</h1>
-    <p>04.07. – 06.07.2025</p>
-    <p id="countdown"></p>
+  <!-- Footer-Navigation -->
+  <div class="floating-menu">
+    <a class="menu-button" href="https://www.google.com/maps?q=Feuerhausstraße+Leitershofen+Stadtbergen" target="_blank">📍 Anfahrt</a>
+    <button class="menu-button" onclick="toggleContact()">❓ Fragen?</button>
   </div>
 
-  <main id="mainContent">
-    <div class="image-wrapper">
-      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
+  <!-- Kontaktformular (versteckt) -->
+  <div id="contactFormOverlay" class="overlay">
+    <div class="form-container">
+      <h2>Fragen? Schreib uns!</h2>
+      <form action="mailto:tobias.aggensteiner@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="Name" placeholder="Dein Name" required />
+        <input type="email" name="E-Mail" placeholder="Deine E-Mail" required />
+        <textarea name="Nachricht" placeholder="Deine Nachricht" required></textarea>
+        <div class="form-buttons">
+          <button type="submit">Absenden</button>
+          <button type="button" onclick="toggleContact()">Abbrechen</button>
+        </div>
+      </form>
     </div>
-    <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
-      📥 Festprogramm als PDF herunterladen
-    </a>
-  </main>
+  </div>
 
   <script>
     const intro = document.getElementById("intro");
@@ -225,29 +40,125 @@
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich
+    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich aktualisieren
 
     function skipIntro() {
       intro.classList.add("hide");
       main.classList.add("visible");
-
-      // 👇 Scrollbarkeit nur aktivieren, wenn nötig
-      setTimeout(() => {
-        const body = document.body;
-        const html = document.documentElement;
-        const totalHeight = Math.max(
-          body.scrollHeight, body.offsetHeight,
-          html.clientHeight, html.scrollHeight, html.offsetHeight
-        );
-        if (totalHeight > window.innerHeight) {
-          document.body.style.overflow = "auto";
-          document.body.style.position = "relative"; // fix aufheben
-        }
-      }, 800); // nach Fade-Out
     }
 
     setTimeout(skipIntro, 3000);
     intro.addEventListener("click", skipIntro);
+
+    function toggleContact() {
+      document.getElementById("contactFormOverlay").classList.toggle("show");
+    }
   </script>
+
+  <style>
+    html, body {
+      /* Ändere overflow, um bei Bedarf scrollen zu können */
+      overflow: auto;
+    }
+
+    /* Navigationsleiste */
+    .floating-menu {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      z-index: 1001;
+    }
+
+    .menu-button {
+      background-color: #da171c;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 0.8rem 1.2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .menu-button:hover {
+      background-color: #b1000a;
+      transform: scale(1.05);
+    }
+
+    /* Kontaktformular Overlay */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .overlay.show {
+      display: flex;
+    }
+
+    .form-container {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+      max-width: 90%;
+      width: 400px;
+      color: white;
+    }
+
+    .form-container h2 {
+      margin-top: 0;
+      color: #ff1e1e;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .form-container textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    .form-buttons button {
+      flex: 1;
+      margin: 0 0.25rem;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      background-color: #da171c;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-buttons button:hover {
+      background-color: #b1000a;
+    }
+  </style>
 </body>
 </html>
