@@ -10,12 +10,11 @@
   <style>
     html, body {
       margin: 0;
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      padding: env(safe-area-inset);
       height: 100%;
       width: 100%;
       background-color: #000;
       overflow: hidden;
-      position: fixed;
       font-family: 'Inter', sans-serif;
       color: white;
     }
@@ -81,6 +80,8 @@
       padding: 2rem 1rem;
       min-height: 100vh;
       box-sizing: border-box;
+      overflow: auto;
+      max-height: 100vh;
     }
 
     main.visible {
@@ -117,11 +118,24 @@
       display: block;
     }
 
-    .button {
-      display: block;
+    .button-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
       max-width: 360px;
+      margin-top: 1rem;
+    }
+
+    .button {
+      width: 100%;
+      min-height: 56px;
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      white-space: nowrap;
       background: rgb(218, 23, 28);
       color: white;
       padding: 16px 32px;
@@ -133,25 +147,29 @@
                   0 0 40px rgba(255, 0, 0, 0.4),
                   inset 0 0 10px rgba(255, 100, 100, 0.3);
       transition: all 0.3s ease;
-      margin: 0.5rem 0;
       animation: pulse 6s infinite ease-in-out;
-      white-space: nowrap;
     }
 
     .button:hover {
       background: rgb(180, 0, 10);
       transform: scale(1.06);
+      box-shadow: 0 0 30px rgba(255, 60, 60, 0.9),
+                  0 0 80px rgba(255, 60, 60, 0.5),
+                  inset 0 0 20px rgba(255, 150, 150, 0.3);
     }
 
-    .button.maps {
+    .maps {
       background: #4285F4;
-      box-shadow: 0 0 20px rgba(66, 133, 244, 0.7),
-                  0 0 40px rgba(66, 133, 244, 0.4),
-                  inset 0 0 10px rgba(150, 180, 255, 0.3);
+      box-shadow: 0 0 20px rgba(66, 133, 244, 0.6),
+                  0 0 40px rgba(66, 133, 244, 0.3),
+                  inset 0 0 10px rgba(100, 150, 255, 0.3);
     }
 
-    .button.maps:hover {
+    .maps:hover {
       background: #3367D6;
+      box-shadow: 0 0 30px rgba(66, 133, 244, 0.8),
+                  0 0 80px rgba(66, 133, 244, 0.4),
+                  inset 0 0 20px rgba(150, 180, 255, 0.4);
     }
 
     @keyframes fadeOut {
@@ -198,7 +216,7 @@
       .intro h1 { font-size: 2.6rem; }
       .intro p { font-size: 1.6rem; }
       #countdown { font-size: 1rem; }
-      .button { font-size: 1rem; padding: 12px 20px; }
+      .button { font-size: 1rem; padding: 12px 20px; min-height: 50px; }
     }
   </style>
 </head>
@@ -214,12 +232,15 @@
     <div class="image-wrapper">
       <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
     </div>
-    <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
-      📥 Festprogramm als PDF herunterladen
-    </a>
-    <a class="button maps" href="https://maps.google.com/?q=Feuerhausstraße+Leitershofen+Stadtbergen" target="_blank">
-      📍 Anfahrt via Google Maps
-    </a>
+
+    <div class="button-wrapper">
+      <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
+        📥 Festprogramm als PDF herunterladen
+      </a>
+      <a class="button maps" href="https://maps.google.com/?q=Feuerhausstraße+Leitershofen+Stadtbergen" target="_blank">
+        📍 Anfahrt via Google Maps
+      </a>
+    </div>
   </main>
 
   <script>
@@ -240,22 +261,16 @@
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60);
+    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich
 
     function skipIntro() {
       intro.classList.add("hide");
       main.classList.add("visible");
 
       setTimeout(() => {
-        const body = document.body;
-        const html = document.documentElement;
-        const totalHeight = Math.max(
-          body.scrollHeight, body.offsetHeight,
-          html.clientHeight, html.scrollHeight, html.offsetHeight
-        );
+        const totalHeight = document.body.scrollHeight;
         if (totalHeight > window.innerHeight) {
           document.body.style.overflow = "auto";
-          document.body.style.position = "relative";
         }
       }, 800);
     }
