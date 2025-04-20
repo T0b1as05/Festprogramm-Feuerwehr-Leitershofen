@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#000000" />
-  <title>🔥 Festprogramm Feuerwehr Leitershofen 🔥</title>
+  <title>🔥 Festprogramm 🔥</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -14,14 +14,14 @@
       height: 100%;
       width: 100%;
       background-color: #000;
-      overflow: hidden;
+      overflow: hidden; /* Wird später bei Bedarf aufgehoben */
       position: fixed;
+      font-family: 'Inter', sans-serif;
+      color: white;
     }
 
     body {
       background: linear-gradient(to bottom, #000000 0%, #1a1a1a 100%);
-      font-family: 'Inter', sans-serif;
-      color: white;
     }
 
     .intro, main {
@@ -131,6 +131,7 @@
       transition: all 0.3s ease;
       margin-top: 1rem;
       animation: pulse 6s infinite ease-in-out;
+      white-space: nowrap;
     }
 
     .button:hover {
@@ -217,18 +218,32 @@
       const diff = festDate - now;
       if (diff > 0) {
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        countdownEl.textContent = Noch ${days} Tage bis zum Festbeginn;
+        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
       } else {
         countdownEl.textContent = "Es ist so weit! 🎉";
       }
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich aktualisieren
+    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich
 
     function skipIntro() {
       intro.classList.add("hide");
       main.classList.add("visible");
+
+      // 👇 Scrollbarkeit nur aktivieren, wenn nötig
+      setTimeout(() => {
+        const body = document.body;
+        const html = document.documentElement;
+        const totalHeight = Math.max(
+          body.scrollHeight, body.offsetHeight,
+          html.clientHeight, html.scrollHeight, html.offsetHeight
+        );
+        if (totalHeight > window.innerHeight) {
+          document.body.style.overflow = "auto";
+          document.body.style.position = "relative"; // fix aufheben
+        }
+      }, 800); // nach Fade-Out
     }
 
     setTimeout(skipIntro, 3000);
