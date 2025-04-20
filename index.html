@@ -17,11 +17,10 @@
       color: white;
       background-color: #000;
       overflow: hidden;
-      position: fixed;
     }
 
-    body {
-      background: linear-gradient(to bottom, #000, #111);
+    body.intro-active {
+      position: fixed;
     }
 
     .intro {
@@ -46,7 +45,7 @@
       max-width: 40vw;
       opacity: 0;
       transform: scale(1.2);
-      animation: logoCinematic 2.4s ease-out forwards;
+      animation: logoCinematic 1.8s ease-out forwards;
     }
 
     .intro h1 {
@@ -55,7 +54,7 @@
       color: #ff1e1e;
       opacity: 0;
       animation: titleSlideUp 1.2s ease-out forwards;
-      animation-delay: 1.2s;
+      animation-delay: 1s;
       text-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
     }
 
@@ -64,7 +63,7 @@
       color: #ccc;
       opacity: 0;
       animation: dateFadeIn 1.4s ease-out forwards;
-      animation-delay: 2s;
+      animation-delay: 1.8s;
       position: relative;
     }
 
@@ -74,7 +73,7 @@
       margin-top: 0.5rem;
       opacity: 0;
       animation: countdownIn 1.2s ease-out forwards;
-      animation-delay: 2.8s;
+      animation-delay: 2.4s;
     }
 
     main {
@@ -86,6 +85,7 @@
       flex-direction: column;
       align-items: center;
       box-sizing: border-box;
+      background: linear-gradient(to bottom, #000, #111);
     }
 
     main.visible {
@@ -171,7 +171,7 @@
     }
   </style>
 </head>
-<body>
+<body class="intro-active">
   <div class="intro" id="intro">
     <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
     <h1>150 Jahre</h1>
@@ -211,9 +211,9 @@
     function skipIntro() {
       intro.classList.add("hide");
       main.classList.add("visible");
+      document.body.classList.remove("intro-active");
       setTimeout(() => {
         document.body.style.overflow = "hidden";
-        document.body.style.position = "fixed";
       }, 1000);
     }
 
