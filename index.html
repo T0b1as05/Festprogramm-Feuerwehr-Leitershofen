@@ -14,7 +14,7 @@
       height: 100%;
       width: 100%;
       background-color: #000;
-      overflow: hidden; /* Wird später bei Bedarf aufgehoben */
+      overflow: hidden;
       position: fixed;
       font-family: 'Inter', sans-serif;
       color: white;
@@ -142,6 +142,39 @@
                   inset 0 0 20px rgba(255, 150, 150, 0.3);
     }
 
+    .google-button {
+      background: #4285F4;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      box-shadow: 0 0 20px rgba(66, 133, 244, 0.5),
+                  0 0 40px rgba(66, 133, 244, 0.3),
+                  inset 0 0 10px rgba(66, 133, 244, 0.2);
+      transition: all 0.3s ease;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .google-button:hover {
+      background: #3367D6;
+      transform: scale(1.06);
+      box-shadow: 0 0 30px rgba(66, 133, 244, 0.7),
+                  0 0 80px rgba(66, 133, 244, 0.4),
+                  inset 0 0 20px rgba(66, 133, 244, 0.3);
+    }
+
+    @media (max-width: 600px) {
+      .intro img { max-width: 80vw; }
+      .intro h1 { font-size: 2.6rem; }
+      .intro p { font-size: 1.6rem; }
+      #countdown { font-size: 1rem; }
+      .button, .google-button { font-size: 1rem; padding: 12px 20px; }
+    }
+
     @keyframes fadeOut {
       to { opacity: 0; visibility: hidden; }
     }
@@ -180,14 +213,6 @@
                     0 0 50px rgba(255, 0, 0, 0.25);
       }
     }
-
-    @media (max-width: 600px) {
-      .intro img { max-width: 80vw; }
-      .intro h1 { font-size: 2.6rem; }
-      .intro p { font-size: 1.6rem; }
-      #countdown { font-size: 1rem; }
-      .button { font-size: 1rem; padding: 12px 20px; }
-    }
   </style>
 </head>
 <body>
@@ -204,6 +229,9 @@
     </div>
     <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
       📥 Festprogramm als PDF herunterladen
+    </a>
+    <a class="google-button" href="https://www.google.com/maps/search/?api=1&query=Feuerhausstraße+Leitershofen" target="_blank">
+      📍 Standort in Google Maps öffnen
     </a>
   </main>
 
@@ -225,13 +253,12 @@
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich
+    setInterval(updateCountdown, 1000 * 60 * 60);
 
     function skipIntro() {
       intro.classList.add("hide");
       main.classList.add("visible");
 
-      // 👇 Scrollbarkeit nur aktivieren, wenn nötig
       setTimeout(() => {
         const body = document.body;
         const html = document.documentElement;
@@ -241,9 +268,9 @@
         );
         if (totalHeight > window.innerHeight) {
           document.body.style.overflow = "auto";
-          document.body.style.position = "relative"; // fix aufheben
+          document.body.style.position = "relative";
         }
-      }, 800); // nach Fade-Out
+      }, 800);
     }
 
     setTimeout(skipIntro, 3000);
@@ -251,3 +278,4 @@
   </script>
 </body>
 </html>
+
