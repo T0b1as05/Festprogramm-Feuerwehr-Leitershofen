@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#000000" />
   <title>🔥 Festprogramm 🔥</title>
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -15,35 +15,31 @@
       width: 100%;
       font-family: 'Inter', sans-serif;
       color: white;
+      background-color: #000;
       overflow: hidden;
+      position: fixed;
     }
 
     body {
-      background: linear-gradient(to bottom, #000, #1a1a1a 40%, #333 100%);
+      background: linear-gradient(to bottom, #000, #111);
     }
 
     .intro {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-      background-size: 200% 200%;
-      animation: pulseBg 8s ease-in-out infinite;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       z-index: 9999;
-      animation-name: fadeInIntro;
-      animation-duration: 2s;
-      animation-fill-mode: forwards;
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      animation: gradientShift 12s ease-in-out infinite alternate;
       cursor: pointer;
-      height: 100vh;
-      overflow: hidden;
     }
 
     .intro.hide {
-      animation: fadeOutZoom 1.4s ease-in-out forwards;
+      animation: fadeOut 1s ease forwards;
     }
 
     .intro img {
@@ -59,16 +55,17 @@
       color: #ff1e1e;
       opacity: 0;
       animation: titleSlideUp 1.2s ease-out forwards;
-      animation-delay: 0.8s;
-      text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      animation-delay: 1.2s;
+      text-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
     }
 
     .intro p {
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       color: #ccc;
       opacity: 0;
-      animation: dateFadeIn 1.2s ease-out forwards;
-      animation-delay: 1.6s;
+      animation: dateFadeIn 1.4s ease-out forwards;
+      animation-delay: 2s;
+      position: relative;
     }
 
     #countdown {
@@ -77,25 +74,22 @@
       margin-top: 0.5rem;
       opacity: 0;
       animation: countdownIn 1.2s ease-out forwards;
-      animation-delay: 2.2s;
+      animation-delay: 2.8s;
     }
 
     main {
-      position: fixed;
-      inset: 0;
       opacity: 0;
+      padding: 2rem 1rem;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
       box-sizing: border-box;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #000000, #1e1e1e 80%, #2a2a2a);
     }
 
     main.visible {
-      animation: fadeInMain 1.6s ease-out forwards;
+      animation: fadeInMain 1s ease forwards;
     }
 
     .image-wrapper {
@@ -103,6 +97,7 @@
       overflow: hidden;
       box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
       margin-bottom: 1.5rem;
+      max-width: 100%;
     }
 
     .image-wrapper img {
@@ -151,31 +146,27 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeInIntro {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeOutZoom {
-      0% { opacity: 1; transform: scale(1); filter: blur(0); }
-      100% { opacity: 0; transform: scale(1.05); filter: blur(4px); }
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
     }
 
     @keyframes fadeInMain {
-      from { opacity: 0; transform: translateY(30px) scale(0.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+      to { opacity: 1; }
     }
 
-    @keyframes pulseBg {
-      0%, 100% { background-position: center top; }
-      50% { background-position: center bottom; }
+    @keyframes gradientShift {
+      0% {
+        background: radial-gradient(circle at center, #111 0%, #000 100%);
+      }
+      100% {
+        background: radial-gradient(circle at center, #191919 0%, #000000 100%);
+      }
     }
 
     @media (max-width: 600px) {
       .intro img { max-width: 70vw; }
-      .intro h1 { font-size: 2.8rem; }
-      .intro p { font-size: 1.6rem; }
-      #countdown { font-size: 1.3rem; }
+      .intro h1 { font-size: 2.5rem; }
+      .intro p, #countdown { font-size: 1.4rem; }
       .button { font-size: 0.9rem; padding: 12px 20px; }
     }
   </style>
@@ -220,6 +211,10 @@
     function skipIntro() {
       intro.classList.add("hide");
       main.classList.add("visible");
+      setTimeout(() => {
+        document.body.style.overflow = "hidden";
+        document.body.style.position = "fixed";
+      }, 1000);
     }
 
     setTimeout(skipIntro, 4000);
