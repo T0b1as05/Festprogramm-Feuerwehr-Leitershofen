@@ -13,7 +13,6 @@
       padding: 0;
       height: 100%;
       width: 100%;
-      background-color: #000;
       font-family: 'Inter', sans-serif;
       color: white;
       overflow: hidden;
@@ -21,27 +20,30 @@
 
     body {
       background: linear-gradient(to bottom, #000, #1a1a1a 40%, #333 100%);
-      position: relative;
     }
 
     .intro {
       position: fixed;
       inset: 0;
-      background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+      background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+      background-size: 200% 200%;
+      animation: pulseBg 8s ease-in-out infinite;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       z-index: 9999;
-      animation: fadeInIntro 2s ease-in-out forwards;
+      animation-name: fadeInIntro;
+      animation-duration: 2s;
+      animation-fill-mode: forwards;
       cursor: pointer;
       height: 100vh;
       overflow: hidden;
     }
 
     .intro.hide {
-      animation: fadeOutZoom 1.2s ease-in-out forwards;
+      animation: fadeOutZoom 1.4s ease-in-out forwards;
     }
 
     .intro img {
@@ -67,7 +69,6 @@
       opacity: 0;
       animation: dateFadeIn 1.2s ease-out forwards;
       animation-delay: 1.6s;
-      position: relative;
     }
 
     #countdown {
@@ -80,18 +81,21 @@
     }
 
     main {
+      position: fixed;
+      inset: 0;
       opacity: 0;
-      padding: 2rem 1rem;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
       box-sizing: border-box;
       overflow: hidden;
+      background: linear-gradient(to bottom, #000000, #1e1e1e 80%, #2a2a2a);
     }
 
     main.visible {
-      animation: fadeInMain 1.4s ease-in-out forwards;
+      animation: fadeInMain 1.6s ease-out forwards;
     }
 
     .image-wrapper {
@@ -153,20 +157,25 @@
     }
 
     @keyframes fadeOutZoom {
-      0% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0; transform: scale(1.05); visibility: hidden; }
+      0% { opacity: 1; transform: scale(1); filter: blur(0); }
+      100% { opacity: 0; transform: scale(1.05); filter: blur(4px); }
     }
 
     @keyframes fadeInMain {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(30px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes pulseBg {
+      0%, 100% { background-position: center top; }
+      50% { background-position: center bottom; }
     }
 
     @media (max-width: 600px) {
       .intro img { max-width: 70vw; }
       .intro h1 { font-size: 2.8rem; }
       .intro p { font-size: 1.6rem; }
-      #countdown { font-size: 1.2rem; }
+      #countdown { font-size: 1.3rem; }
       .button { font-size: 0.9rem; padding: 12px 20px; }
     }
   </style>
@@ -211,9 +220,6 @@
     function skipIntro() {
       intro.classList.add("hide");
       main.classList.add("visible");
-      setTimeout(() => {
-        document.body.style.overflow = "auto";
-      }, 1200);
     }
 
     setTimeout(skipIntro, 4000);
