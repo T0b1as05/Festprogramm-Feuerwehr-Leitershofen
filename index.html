@@ -1,238 +1,140 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
-  <title>🔥 Festprogramm Feuerwehr Leitershofen 🔥</title>
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    html, body {
-      margin: 0;
-      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-      height: 100%;
-      width: 100%;
-      background-color: #000;
-      overflow: hidden;
-      position: fixed;
-    }
-
-    body {
-      background: linear-gradient(to bottom, #000000 0%, #1a1a1a 100%);
-      font-family: 'Inter', sans-serif;
-      color: white;
-    }
-
-    .intro, main {
-      position: relative;
-      z-index: 1;
-    }
-
-    .intro {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: black;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .intro.hide {
-      animation: fadeOut 0.8s ease forwards;
-    }
-
-    .intro img {
-      max-width: 50vw;
-      height: auto;
-      animation: scaleIn 1.2s ease-out forwards;
-    }
-
-    .intro h1 {
-      font-size: 3.5rem;
-      margin: 1rem 0 0;
-      color: #ff1e1e;
-      animation: slideInUp 1.2s ease-out forwards;
-    }
-
-    .intro p {
-      font-size: 2rem;
-      margin-top: 0.5rem;
-      color: #ddd;
-      animation: fadeIn 2s ease-out forwards;
-    }
-
-    #countdown {
-      font-size: 1.8rem;
-      color: #aaa;
-      margin-top: 0.5rem;
-      animation: fadeIn 2.5s ease-out forwards;
-    }
-
-    main {
-      opacity: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-
-    main.visible {
-      animation: showMain 0.8s ease forwards;
-    }
-
-    .image-wrapper {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(255, 0, 0, 0.4),
-                  0 0 80px rgba(255, 0, 0, 0.2);
-      margin-bottom: 1.5rem;
-      animation: pulse 6s infinite ease-in-out;
-    }
-
-    .image-wrapper::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent);
-      transform: skewX(-20deg);
-      animation: shimmer 2.5s infinite;
-      pointer-events: none;
-    }
-
-    .image-wrapper img {
-      max-width: 100%;
-      max-height: 80vh;
-      border-radius: 24px;
-      display: block;
-    }
-
-    .button {
-      background: rgb(218, 23, 28);
-      color: white;
-      padding: 16px 32px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.7),
-                  0 0 40px rgba(255, 0, 0, 0.4),
-                  inset 0 0 10px rgba(255, 100, 100, 0.3);
-      transition: all 0.3s ease;
-      margin-top: 1rem;
-      animation: pulse 6s infinite ease-in-out;
-    }
-
-    .button:hover {
-      background: rgb(180, 0, 10);
-      transform: scale(1.06);
-      box-shadow: 0 0 30px rgba(255, 60, 60, 0.9),
-                  0 0 80px rgba(255, 60, 60, 0.5),
-                  inset 0 0 20px rgba(255, 150, 150, 0.3);
-    }
-
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
-    @keyframes scaleIn {
-      0% { transform: scale(0.6); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes slideInUp {
-      0% { transform: translateY(30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes showMain {
-      to { opacity: 1; }
-    }
-
-    @keyframes shimmer {
-      0% { left: -75%; }
-      100% { left: 125%; }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow: 0 0 20px rgba(255, 0, 0, 0.3),
-                    0 0 40px rgba(255, 0, 0, 0.15);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>150 Jahre Feuerwehr Leitershofen</title>
+    <style>
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 60px rgba(255, 0, 0, 0.8);
+        }
+        100% {
+          box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+        }
       }
-      50% {
-        box-shadow: 0 0 25px rgba(255, 0, 0, 0.5),
-                    0 0 50px rgba(255, 0, 0, 0.25);
+
+      body {
+        background-color: #000;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
       }
-    }
 
-    @media (max-width: 600px) {
-      .intro img { max-width: 80vw; }
-      .intro h1 { font-size: 2.6rem; }
-      .intro p { font-size: 1.6rem; }
-      #countdown { font-size: 1rem; }
-      .button { font-size: 1rem; padding: 12px 20px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="intro" id="intro">
-    <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
-    <h1>150 Jahre</h1>
-    <p>04.07. – 06.07.2025</p>
-    <p id="countdown"></p>
-  </div>
-
-  <main id="mainContent">
-    <div class="image-wrapper">
-      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
-    </div>
-    <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
-      📥 Festprogramm als PDF herunterladen
-    </a>
-  </main>
-
-  <script>
-    const intro = document.getElementById("intro");
-    const main = document.getElementById("mainContent");
-    const countdownEl = document.getElementById("countdown");
-    const festDate = new Date("2025-07-04T17:00:00");
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = festDate - now;
-      if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
-      } else {
-        countdownEl.textContent = "Es ist so weit! 🎉";
+      main {
+        max-width: 900px;
+        width: 100%;
       }
-    }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich aktualisieren
+      .programm-wrapper {
+        background: #111;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
+        animation: pulse 6s infinite ease-in-out;
+      }
 
-    function skipIntro() {
-      intro.classList.add("hide");
-      main.classList.add("visible");
-    }
+      .programm-wrapper .logo {
+        max-width: 200px;
+        margin-bottom: 1rem;
+        animation: pulse 6s infinite ease-in-out;
+      }
 
-    setTimeout(skipIntro, 3000);
-    intro.addEventListener("click", skipIntro);
-  </script>
-</body>
+      h2 {
+        color: #ff1e1e;
+        font-size: 2rem;
+        margin: 1rem 0;
+      }
+
+      h3 {
+        text-decoration: underline;
+        font-size: 1.5rem;
+      }
+
+      section {
+        margin-top: 2rem;
+      }
+
+      h4 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: #fff;
+      }
+
+      ul {
+        list-style-type: circle;
+        margin-left: 1.5rem;
+        line-height: 1.6;
+        color: #ddd;
+      }
+
+      .button {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        background-color: #ff1e1e;
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .button:hover {
+        background-color: #cc0000;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="mainContent">
+      <div class="programm-wrapper">
+        <img src="Logo.png" alt="Feuerwehr Leitershofen Logo" class="logo" />
+        <h2>150 Jahre</h2>
+        <h3>Festprogramm</h3>
+
+        <section>
+          <h4><strong>Freitag 04.07.2025:</strong></h4>
+          <ul>
+            <li><strong>17:00 Uhr:</strong> Öffnung des Straßenfestes</li>
+            <li><strong>19:00 Uhr:</strong> Livemusik mit „Trumpet-Band“</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4><strong>Samstag 05.07.2025:</strong></h4>
+          <ul>
+            <li><strong>11:30 Uhr:</strong> Eröffnung</li>
+            <li><strong>13:00 Uhr:</strong> Vorführung Hundestaffel</li>
+            <li><strong>14:00 Uhr:</strong> Beginn Tauchcontainer</li>
+            <li><strong>15:00 Uhr:</strong> Vorführung Schule Leitershofen</li>
+            <li><strong>15:30 Uhr:</strong> Feuerwehrolympiade</li>
+            <li><strong>18:00 Uhr:</strong> Siegerehrung der Feuerwehrolympiade</li>
+            <li><strong>19:00 Uhr:</strong> Livemusik mit „Die Lumpenbacher“</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4><strong>Sonntag 06.07.2025:</strong></h4>
+          <ul>
+            <li><strong>10:30 Uhr:</strong> Festgottesdienst</li>
+            <li><strong>11:30 Uhr:</strong> Mittagessen (Spanferkel)</li>
+            <li><strong>13:30 Uhr:</strong> Aufstellung zum Festumzug</li>
+            <li><strong>14:00 Uhr:</strong> Beginn Festumzug</li>
+            <li><strong>15:30 Uhr:</strong> Einzug der Fahnen auf das Straßenfest</li>
+            <li><strong>15:30 Uhr – 17:30 Uhr:</strong> Musikkapelle Leitershofen</li>
+          </ul>
+        </section>
+
+        <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
+          📥 Festprogramm als PDF herunterladen
+        </a>
+      </div>
+    </main>
+  </body>
 </html>
