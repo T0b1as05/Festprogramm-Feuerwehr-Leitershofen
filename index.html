@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#000000" />
   <title>🔥 Festprogramm 🔥</title>
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -27,13 +27,14 @@
     .intro {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      background: radial-gradient(ellipse at center, #111 0%, #000 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
       text-align: center;
+      z-index: 9999;
+      animation: lightReveal 3s ease-in-out forwards;
       cursor: pointer;
     }
 
@@ -44,46 +45,50 @@
     .intro img {
       max-width: 40vw;
       opacity: 0;
-      animation: logoIn 1.6s ease-out forwards;
+      transform: scale(1.2);
+      animation: logoCinematic 2.4s ease-out forwards;
     }
 
     .intro h1 {
-      font-size: 3.5rem;
-      color: #ff3333;
+      font-size: 3.8rem;
+      margin: 1.2rem 0 0;
+      color: #ff1e1e;
       opacity: 0;
-      animation: textIn 1s ease-out forwards;
-      animation-delay: 1.2s;
-      text-shadow: 0 0 15px rgba(255, 50, 50, 0.6);
+      animation: titleSlideUp 1.2s ease-out forwards;
+      animation-delay: 1.5s;
+      text-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
     }
 
     .intro p {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: #ccc;
       opacity: 0;
-      animation: textIn 1s ease-out forwards;
-      animation-delay: 1.8s;
+      animation: dateFadeIn 1.4s ease-out forwards;
+      animation-delay: 2.2s;
+      position: relative;
     }
 
     #countdown {
       font-size: 1.2rem;
       color: #999;
+      margin-top: 0.5rem;
       opacity: 0;
-      animation: textIn 1s ease-out forwards;
-      animation-delay: 2.4s;
+      animation: countdownIn 1.2s ease-out forwards;
+      animation-delay: 2.8s;
     }
 
     main {
       opacity: 0;
       padding: 2rem 1rem;
       min-height: 100vh;
-      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-sizing: border-box;
     }
 
     main.visible {
-      animation: fadeInMain 0.8s ease forwards;
+      animation: fadeInMain 1s ease forwards;
     }
 
     .image-wrapper {
@@ -118,14 +123,25 @@
       box-shadow: 0 0 30px rgba(255, 60, 60, 0.7);
     }
 
-    @keyframes logoIn {
-      0% { transform: scale(0.6); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes logoCinematic {
+      0% { opacity: 0; transform: scale(1.2) blur(5px); }
+      60% { opacity: 1; transform: scale(1) blur(0); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes textIn {
-      0% { transform: translateY(20px); opacity: 0; }
+    @keyframes titleSlideUp {
+      0% { transform: translateY(40px); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes dateFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes countdownIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeOut {
@@ -136,10 +152,15 @@
       to { opacity: 1; }
     }
 
+    @keyframes lightReveal {
+      0% { background: #000; }
+      100% { background: radial-gradient(ellipse at center, #111 0%, #000 100%); }
+    }
+
     @media (max-width: 600px) {
       .intro img { max-width: 70vw; }
       .intro h1 { font-size: 2.5rem; }
-      .intro p, #countdown { font-size: 1.2rem; }
+      .intro p, #countdown { font-size: 1.1rem; }
       .button { font-size: 0.9rem; padding: 12px 20px; }
     }
   </style>
@@ -179,19 +200,18 @@
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60); // stündlich
+    setInterval(updateCountdown, 1000 * 60 * 60);
 
     function skipIntro() {
       intro.classList.add("hide");
       main.classList.add("visible");
-
       setTimeout(() => {
         document.body.style.overflow = "auto";
         document.body.style.position = "relative";
       }, 1000);
     }
 
-    setTimeout(skipIntro, 3500);
+    setTimeout(skipIntro, 4000);
     intro.addEventListener("click", skipIntro);
   </script>
 </body>
