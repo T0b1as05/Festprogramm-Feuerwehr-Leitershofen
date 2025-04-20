@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#000000" />
   <title>🔥 Festprogramm 🔥</title>
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -17,11 +17,11 @@
       font-family: 'Inter', sans-serif;
       color: white;
       overflow: hidden;
-      position: fixed;
     }
 
     body {
       background: linear-gradient(to bottom, #000, #1a1a1a 40%, #333 100%);
+      position: relative;
     }
 
     .intro {
@@ -34,12 +34,14 @@
       justify-content: center;
       text-align: center;
       z-index: 9999;
-      animation: lightReveal 3s ease-in-out forwards;
+      animation: fadeInIntro 2s ease-in-out forwards;
       cursor: pointer;
+      height: 100vh;
+      overflow: hidden;
     }
 
     .intro.hide {
-      animation: fadeOut 1s ease forwards;
+      animation: fadeOutZoom 1.2s ease-in-out forwards;
     }
 
     .intro img {
@@ -60,7 +62,7 @@
     }
 
     .intro p {
-      font-size: 1.6rem;
+      font-size: 1.9rem;
       color: #ccc;
       opacity: 0;
       animation: dateFadeIn 1.2s ease-out forwards;
@@ -69,7 +71,7 @@
     }
 
     #countdown {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: #999;
       margin-top: 0.5rem;
       opacity: 0;
@@ -85,10 +87,11 @@
       flex-direction: column;
       align-items: center;
       box-sizing: border-box;
+      overflow: hidden;
     }
 
     main.visible {
-      animation: fadeInMain 1s ease forwards;
+      animation: fadeInMain 1.4s ease-in-out forwards;
     }
 
     .image-wrapper {
@@ -144,23 +147,26 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadeOut {
-      to { opacity: 0; visibility: hidden; }
-    }
-
-    @keyframes fadeInMain {
+    @keyframes fadeInIntro {
+      from { opacity: 0; }
       to { opacity: 1; }
     }
 
-    @keyframes lightReveal {
-      0% { background: #000; }
-      100% { background: radial-gradient(ellipse at center, #111 0%, #000 100%); }
+    @keyframes fadeOutZoom {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.05); visibility: hidden; }
+    }
+
+    @keyframes fadeInMain {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 600px) {
       .intro img { max-width: 70vw; }
-      .intro h1 { font-size: 2.5rem; }
-      .intro p, #countdown { font-size: 1.1rem; }
+      .intro h1 { font-size: 2.8rem; }
+      .intro p { font-size: 1.6rem; }
+      #countdown { font-size: 1.2rem; }
       .button { font-size: 0.9rem; padding: 12px 20px; }
     }
   </style>
@@ -207,8 +213,7 @@
       main.classList.add("visible");
       setTimeout(() => {
         document.body.style.overflow = "auto";
-        document.body.style.position = "relative";
-      }, 1000);
+      }, 1200);
     }
 
     setTimeout(skipIntro, 4000);
