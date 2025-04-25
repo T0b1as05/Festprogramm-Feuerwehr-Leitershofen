@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#000000" />
   <title>🔥 Festprogramm 🔥</title>
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -32,8 +32,8 @@
       justify-content: center;
       text-align: center;
       z-index: 9999;
-      background: radial-gradient(circle at center, #111 0%, #000 100%);
-      animation: gradientShift 12s ease-in-out infinite alternate;
+      background: linear-gradient(135deg, #0f0f0f, #1a0000);
+      animation: backgroundPulse 10s ease-in-out infinite;
       cursor: pointer;
     }
 
@@ -42,38 +42,38 @@
     }
 
     .intro img {
-      max-width: 40vw;
+      max-width: 36vw;
       opacity: 0;
-      transform: scale(1.2);
-      animation: logoCinematic 1.8s ease-out forwards;
+      animation: logoZoomFade 2s ease-out forwards;
     }
 
     .intro h1 {
-      font-size: 3.8rem;
-      margin: 1.2rem 0 0;
-      color: #ff1e1e;
+      font-size: 4rem;
+      margin: 1.4rem 0 0;
+      color: #ff3b3b;
       opacity: 0;
-      animation: titleSlideUp 1.2s ease-out forwards;
-      animation-delay: 1s;
-      text-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+      animation: textFadeInUp 1.4s ease-out forwards;
+      animation-delay: 1.4s;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
     }
 
     .intro p {
-      font-size: 1.8rem;
-      color: #ccc;
+      font-size: 1.6rem;
+      color: #e0e0e0;
+      margin-top: 0.5rem;
       opacity: 0;
-      animation: dateFadeIn 1.4s ease-out forwards;
-      animation-delay: 1.8s;
-      position: relative;
+      animation: textFadeInUp 1.2s ease-out forwards;
+      animation-delay: 2.4s;
     }
 
     #countdown {
-      font-size: 1.4rem;
-      color: #999;
-      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      color: #bbbbbb;
+      margin-top: 0.3rem;
       opacity: 0;
-      animation: countdownIn 1.2s ease-out forwards;
-      animation-delay: 2.4s;
+      animation: textFadeInUp 1s ease-out forwards;
+      animation-delay: 3.4s;
     }
 
     main {
@@ -125,24 +125,13 @@
       box-shadow: 0 0 30px rgba(255, 60, 60, 0.7);
     }
 
-    @keyframes logoCinematic {
-      0% { opacity: 0; transform: scale(1.2) blur(5px); }
-      60% { opacity: 1; transform: scale(1) blur(0); }
-      100% { opacity: 1; transform: scale(1); }
+    @keyframes logoZoomFade {
+      0% { opacity: 0; transform: scale(1.3); filter: blur(5px); }
+      100% { opacity: 1; transform: scale(1); filter: blur(0); }
     }
 
-    @keyframes titleSlideUp {
-      0% { transform: translateY(40px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes dateFadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes countdownIn {
-      0% { opacity: 0; transform: translateY(10px); }
+    @keyframes textFadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
@@ -154,19 +143,16 @@
       to { opacity: 1; }
     }
 
-    @keyframes gradientShift {
-      0% {
-        background: radial-gradient(circle at center, #111 0%, #000 100%);
-      }
-      100% {
-        background: radial-gradient(circle at center, #191919 0%, #000000 100%);
-      }
+    @keyframes backgroundPulse {
+      0% { background: linear-gradient(135deg, #0f0f0f, #1a0000); }
+      50% { background: linear-gradient(135deg, #1a0000, #0f0f0f); }
+      100% { background: linear-gradient(135deg, #0f0f0f, #1a0000); }
     }
 
     @media (max-width: 600px) {
       .intro img { max-width: 70vw; }
-      .intro h1 { font-size: 2.5rem; }
-      .intro p, #countdown { font-size: 1.4rem; }
+      .intro h1 { font-size: 2.8rem; }
+      .intro p, #countdown { font-size: 1.2rem; }
       .button { font-size: 0.9rem; padding: 12px 20px; }
     }
   </style>
@@ -217,7 +203,7 @@
       }, 1000);
     }
 
-    setTimeout(skipIntro, 4500); // Verlängert um 0.5 Sekunden
+    setTimeout(skipIntro, 5000); // Verlängert auf 5 Sek für mehr Wirkung
     intro.addEventListener("click", skipIntro);
   </script>
 </body>
