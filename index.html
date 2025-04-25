@@ -32,8 +32,7 @@
       justify-content: center;
       text-align: center;
       z-index: 9999;
-      background: radial-gradient(circle at center, #111 0%, #000 100%);
-      animation: gradientShift 12s ease-in-out infinite alternate;
+      background-color: #000; /* Kein Verlauf, kein Lichtschimmer */
       cursor: pointer;
     }
 
@@ -55,7 +54,6 @@
       opacity: 0;
       animation: titleSlideUp 1.2s ease-out forwards;
       animation-delay: 1s;
-      /* text-shadow entfernt */
     }
 
     .intro p {
@@ -154,15 +152,6 @@
       to { opacity: 1; }
     }
 
-    @keyframes gradientShift {
-      0% {
-        background: radial-gradient(circle at center, #111 0%, #000 100%);
-      }
-      100% {
-        background: radial-gradient(circle at center, #191919 0%, #000000 100%);
-      }
-    }
-
     @media (max-width: 600px) {
       .intro img { max-width: 70vw; }
       .intro h1 { font-size: 2.5rem; }
@@ -217,7 +206,7 @@
       }, 1000);
     }
 
-    setTimeout(skipIntro, 4500);
+    setTimeout(skipIntro, 3500); // auf 3.5 Sekunden verkürzt
     intro.addEventListener("click", skipIntro);
   </script>
 </body>
