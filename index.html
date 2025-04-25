@@ -15,7 +15,7 @@
       width: 100%;
       font-family: 'Inter', sans-serif;
       color: white;
-      background: linear-gradient(to bottom, #000, #2c2c2c);
+      background: linear-gradient(to bottom, #000, #222);
       overflow: hidden;
     }
 
@@ -32,7 +32,8 @@
       justify-content: center;
       text-align: center;
       z-index: 9999;
-      background-color: #000; /* Kein Verlauf, kein Lichtschimmer */
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      animation: gradientShift 12s ease-in-out infinite alternate;
       cursor: pointer;
     }
 
@@ -54,6 +55,7 @@
       opacity: 0;
       animation: titleSlideUp 1.2s ease-out forwards;
       animation-delay: 1s;
+      text-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
     }
 
     .intro p {
@@ -62,7 +64,6 @@
       opacity: 0;
       animation: dateFadeIn 1.4s ease-out forwards;
       animation-delay: 1.8s;
-      position: relative;
     }
 
     #countdown {
@@ -83,7 +84,7 @@
       flex-direction: column;
       align-items: center;
       box-sizing: border-box;
-      background: linear-gradient(to bottom, #000, #2c2c2c);
+      background: linear-gradient(to bottom, #000, #222);
     }
 
     main.visible {
@@ -125,7 +126,7 @@
 
     @keyframes logoCinematic {
       0% { opacity: 0; transform: scale(1.2) blur(5px); }
-      60% { opacity: 1; transform: scale(1) blur(0); }
+      60% { opacity: 1; transform: scale(1.05) blur(0); }
       100% { opacity: 1; transform: scale(1); }
     }
 
@@ -152,8 +153,17 @@
       to { opacity: 1; }
     }
 
+    @keyframes gradientShift {
+      0% {
+        background: radial-gradient(circle at center, #111 0%, #000 100%);
+      }
+      100% {
+        background: radial-gradient(circle at center, #191919 0%, #000000 100%);
+      }
+    }
+
     @media (max-width: 600px) {
-      .intro img { max-width: 70vw; }
+      .intro img { max-width: 85vw; }
       .intro h1 { font-size: 2.5rem; }
       .intro p, #countdown { font-size: 1.4rem; }
       .button { font-size: 0.9rem; padding: 12px 20px; }
@@ -206,7 +216,7 @@
       }, 1000);
     }
 
-    setTimeout(skipIntro, 3500); // auf 3.5 Sekunden verkürzt
+    setTimeout(skipIntro, 3500);
     intro.addEventListener("click", skipIntro);
   </script>
 </body>
