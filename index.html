@@ -32,7 +32,7 @@
       justify-content: center;
       text-align: center;
       z-index: 9999;
-      background-color: #000; /* Kein Verlauf, kein Lichtschimmer */
+      background-color: #000;
       cursor: pointer;
     }
 
@@ -115,12 +115,31 @@
       text-decoration: none;
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
       transition: all 0.3s ease;
+      margin-bottom: 1rem;
     }
 
     .button:hover {
       transform: scale(1.05);
       background: rgb(180, 0, 10);
       box-shadow: 0 0 30px rgba(255, 60, 60, 0.7);
+    }
+
+    .map-button {
+      background: #4285F4;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(66, 133, 244, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .map-button:hover {
+      transform: scale(1.05);
+      background: #3367D6;
+      box-shadow: 0 0 30px rgba(66, 133, 244, 0.6);
     }
 
     @keyframes logoCinematic {
@@ -152,25 +171,25 @@
       to { opacity: 1; }
     }
 
-  @media (max-width: 600px) {
-  .intro img {
-    max-width: 85vw;
-  }
+    @media (max-width: 600px) {
+      .intro img {
+        max-width: 85vw;
+      }
 
-  .intro h1 {
-    font-size: 2.5rem;
-  }
+      .intro h1 {
+        font-size: 2.5rem;
+      }
 
-  .intro p,
-  #countdown {
-    font-size: 1.4rem;
-  }
+      .intro p,
+      #countdown {
+        font-size: 1.4rem;
+      }
 
-  .button {
-    font-size: 0.9rem;
-    padding: 12px 20px;
-  }
-
+      .button,
+      .map-button {
+        font-size: 0.9rem;
+        padding: 12px 20px;
+      }
     }
   </style>
 </head>
@@ -188,6 +207,9 @@
     </div>
     <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
       📥 Festprogramm als PDF herunterladen
+    </a>
+    <a class="map-button" href="https://maps.app.goo.gl/xdRBftaYtCARr3qKA" target="_blank">
+      📍 Anfahrt & Parkplatz
     </a>
   </main>
 
@@ -220,7 +242,7 @@
       }, 1000);
     }
 
-    setTimeout(skipIntro, 4000); // auf 3.5 Sekunden verkürzt
+    setTimeout(skipIntro, 4000);
     intro.addEventListener("click", skipIntro);
   </script>
 </body>
