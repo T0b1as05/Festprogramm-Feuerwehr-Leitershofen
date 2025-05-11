@@ -35,7 +35,7 @@
       overflow: hidden;
       box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
       margin-bottom: 1rem;
-      margin-top: 2.5rem;
+      margin-top: 1rem;
       max-width: 100%;
       position: relative;
     }
@@ -49,8 +49,8 @@
 
     .back-button {
       position: absolute;
-      top: 2rem;
-      left: 4rem;
+      top: 1rem;
+      left: 1rem;
       background: rgba(255, 255, 255, 0.1);
       padding: 0.6rem 1rem;
       border-radius: 10px;
@@ -69,13 +69,14 @@
 
     .button {
       background-color: #d91e18;
-      padding: 1rem 1.5rem;
+      padding: 0.8rem 1.2rem;
       border-radius: 14px;
       text-decoration: none;
       color: white;
       font-weight: bold;
       box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
       transition: all 0.3s ease;
+      margin-top: 0.5rem;
     }
 
     .button:hover {
@@ -85,12 +86,23 @@
 
     @media (max-width: 600px) {
       .button {
-        padding: 0.8rem 1.2rem; /* Dünnerer Button */
-        box-shadow: 0 0 10px rgba(255, 50, 50, 0.3); /* Kleinerer Schatten */
+        padding: 0.6rem 1rem; /* Dünnerer Button */
+        box-shadow: 0 0 8px rgba(255, 50, 50, 0.3); /* Kleinerer Schatten */
       }
 
       .image-wrapper img {
-        max-height: 70vh; /* Kleineres Bild */
+        max-height: 60vh; /* Kleineres Bild */
+      }
+
+      main {
+        padding: 2rem 1rem; /* Weniger Abstand am Rand */
+      }
+
+      .back-button {
+        top: 0.5rem;
+        left: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
       }
     }
   </style>
