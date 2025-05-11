@@ -287,46 +287,22 @@
     <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
     <h1>150 Jahre</h1>
     <p>04.07. – 06.07.2025</p>
-    <p id="countdown"></p>
   </div>
 
   <div class="menu" id="menu">
     <img src="logo.png" alt="Logo" class="menu-logo" />
-    <a href="#" class="menu-button btn-programm" onclick="showProgram()">📜 Zum Festprogramm</a>
+    <a href="festprogramm.html" class="menu-button btn-programm">📜 Zum Festprogramm</a>
     <a class="menu-button btn-parking" href="https://maps.app.goo.gl/CZa2PC3xX8wAWMDd6" target="_blank">🅿️ Anfahrt Parkplatz</a>
     <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank">🎉 Anfahrt Straßenfest</a>
   </div>
 
   <main id="mainContent">
-    <div class="back-button" onclick="backToMenu()">← Zurück</div>
-    <div class="image-wrapper">
-      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
-    </div>
-    <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
-      📥 Festprogramm als PDF herunterladen
-    </a>
+    <!-- Hauptinhalt hier -->
   </main>
 
   <script>
     const intro = document.getElementById("intro");
-    const main = document.getElementById("mainContent");
     const menu = document.getElementById("menu");
-    const countdownEl = document.getElementById("countdown");
-    const festDate = new Date("2025-07-04T17:00:00");
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = festDate - now;
-      if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
-      } else {
-        countdownEl.textContent = "Es ist so weit! 🎉";
-      }
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60);
 
     function skipIntro() {
       intro.classList.add("hide");
@@ -335,16 +311,6 @@
         menu.classList.add("visible");
         document.body.style.overflow = "hidden";
       }, 1000);
-    }
-
-    function showProgram() {
-      menu.classList.remove("visible");
-      main.classList.add("visible");
-    }
-
-    function backToMenu() {
-      main.classList.remove("visible");
-      menu.classList.add("visible");
     }
 
     setTimeout(skipIntro, 4000);
