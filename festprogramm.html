@@ -17,13 +17,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
     }
 
     .back-button {
       position: absolute;
-      top: 2rem;
-      left: 4rem;
+      top: 1rem;
+      left: 2rem;
       background: rgba(255, 255, 255, 0.1);
       padding: 0.6rem 1rem;
       border-radius: 10px;
@@ -41,9 +42,9 @@
     }
 
     .image-wrapper {
-      margin-top: 3rem;
+      margin-top: 2rem;
       margin-bottom: 2rem;
-      max-width: 90%;
+      max-width: 100%;
       border-radius: 24px;
       overflow: hidden;
       box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
@@ -54,6 +55,7 @@
     .image-wrapper img {
       width: 100%;
       height: auto;
+      max-height: 60vh; /* Maximalhöhe des Bildes anpassen */
       border-radius: 24px;
     }
 
@@ -77,19 +79,18 @@
 
     /* Mobile view adjustments */
     @media (max-width: 768px) {
+      .back-button {
+        top: 1rem;
+        left: 1rem;
+      }
+
       .image-wrapper {
-        margin-top: 2rem;
+        margin-top: 1rem;
         margin-bottom: 1rem;
       }
 
-      .back-button {
-        top: 1rem;
-        left: 2rem;
-      }
-
       .button {
-        width: 100%;
-        text-align: center;
+        width: 80%; /* Button auf mobilen Geräten etwas kleiner */
         padding: 1rem;
       }
     }
