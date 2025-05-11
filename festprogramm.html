@@ -41,13 +41,11 @@
       margin-top: 2.5rem;
       max-width: 100%;
       position: relative;
-      display: flex;
-      justify-content: center; /* Zentrieren */
     }
 
     .image-wrapper img {
-      max-width: 95%; /* Bild kleiner auf mobilen Geräten */
-      max-height: 70vh; /* Bildhöhe für Handys anpassen */
+      max-width: 100%;
+      max-height: 80vh;
       display: block;
       border-radius: 24px;
     }
@@ -81,9 +79,6 @@
       font-weight: bold;
       box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
       transition: all 0.3s ease;
-      display: flex;
-      justify-content: center; /* Zentrieren */
-      align-items: center; /* Zentrieren */
     }
 
     .button:hover {
@@ -97,12 +92,12 @@
 
     @media (max-width: 600px) {
       .button {
-        padding: 0.9rem 1.3rem; /* Button minimal dünner */
+        padding: 0.8rem 1.2rem; /* Etwas dünnerer Button */
+        box-shadow: 0 0 10px rgba(255, 50, 50, 0.3); /* Kleinerer Schatten */
       }
 
       .image-wrapper img {
-        max-width: 90%; /* Bild noch etwas kleiner */
-        max-height: 60vh; /* Bildhöhe für Handys noch kleiner */
+        max-height: 70vh; /* Etwas kleineres Bild */
       }
     }
   </style>
@@ -116,16 +111,3 @@
     <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
       📥 Festprogramm als PDF herunterladen
     </a>
-  </main>
-
-  <script>
-    function backToMenu() {
-      window.history.back();
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById('mainContent').classList.add('visible');
-    });
-  </script>
-</body>
-</html>
