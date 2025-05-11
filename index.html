@@ -101,24 +101,6 @@
         font-size: 1.4rem;
       }
     }
-
-    /* Impressum-Link */
-    .impressum-link {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
-      font-size: 0.7rem;
-      z-index: 1000;
-    }
-
-    .impressum-link a {
-      color: #ccc; /* Graue Farbe */
-      text-decoration: none; /* Kein Unterstrich */
-    }
-
-    .impressum-link a:hover {
-      color: white; /* Farbe bei Hover ändern */
-    }
   </style>
 </head>
 <body>
@@ -127,10 +109,6 @@
     <h1>150 Jahre</h1>
     <p>04.07. – 06.07.2025</p>
     <p id="countdown"></p>
-  </div>
-
-  <div class="impressum-link">
-    <a href="impressum.html">Impressum</a>
   </div>
 
   <script>
@@ -143,7 +121,7 @@
       const diff = festDate - now;
       if (diff > 0) {
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
+        countdownEl.textContent = Noch ${days} Tage bis zum Festbeginn;
       } else {
         countdownEl.textContent = "Es ist so weit! 🎉";
       }
