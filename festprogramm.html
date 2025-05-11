@@ -105,6 +105,25 @@
         font-size: 0.8rem;
       }
     }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      font-size: 0.7rem;
+      color: #ccc;
+      z-index: 100;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -117,6 +136,10 @@
       📥 Festprogramm als PDF herunterladen
     </a>
   </main>
+
+  <footer>
+    <a href="impressum.html">Impressum</a>
+  </footer>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
