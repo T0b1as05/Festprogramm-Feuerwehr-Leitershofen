@@ -238,6 +238,17 @@
     updateCountdown();
     setInterval(updateCountdown, 1000 * 60 * 60);
 
+    function skipIntro() {
+      intro.classList.add("hide");
+      document.body.classList.remove("intro-active");
+      setTimeout(() => {
+        menu.classList.add("visible");
+      }, 1000);
+      document.body.removeEventListener('click', skipIntro);
+    }
+
+    document.body.addEventListener('click', skipIntro);
+
     setTimeout(() => {
       intro.classList.add("hide");
       document.body.classList.remove("intro-active");
