@@ -84,6 +84,16 @@
       transform: scale(1.05);
     }
 
+    .impressum-link {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      color: white;
+      z-index: 1000;
+      text-decoration: none;
+    }
+
     @media (max-width: 600px) {
       .button {
         padding: 0.6rem 1rem; /* Dünnerer Button */
@@ -105,27 +115,6 @@
         font-size: 0.8rem;
       }
     }
-
-    .impressum-link {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.4rem 0.8rem;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      color: #ccc;
-      z-index: 1000;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .impressum-link:hover {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-    }
-
   </style>
 </head>
 <body>
