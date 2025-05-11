@@ -18,7 +18,7 @@
     }
 
     main {
-      opacity: 0;
+      opacity: 1;
       padding: 3rem 1rem;
       height: 100vh;
       overflow-y: auto;
@@ -27,10 +27,7 @@
       align-items: center;
       box-sizing: border-box;
       background: linear-gradient(to bottom, #000, #2c2c2c);
-    }
-
-    main.visible {
-      animation: fadeInMain 1s ease forwards;
+      visibility: visible;
     }
 
     .image-wrapper {
@@ -86,28 +83,33 @@
       transform: scale(1.05);
     }
 
-    @keyframes fadeInMain {
-      to { opacity: 1; }
-    }
-
     @media (max-width: 600px) {
       .button {
-        padding: 0.8rem 1.2rem; /* Etwas dünnerer Button */
+        padding: 0.8rem 1.2rem; /* Dünnerer Button */
         box-shadow: 0 0 10px rgba(255, 50, 50, 0.3); /* Kleinerer Schatten */
       }
 
       .image-wrapper img {
-        max-height: 70vh; /* Etwas kleineres Bild */
+        max-height: 70vh; /* Kleineres Bild */
       }
     }
   </style>
 </head>
 <body>
   <main id="mainContent">
-    <div class="back-button" onclick="backToMenu()">← Zurück</div>
+    <div class="back-button" onclick="window.history.back()">← Zurück</div>
     <div class="image-wrapper">
       <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
     </div>
     <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
       📥 Festprogramm als PDF herunterladen
     </a>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById('mainContent').style.visibility = 'visible';
+    });
+  </script>
+</body>
+</html>
