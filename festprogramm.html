@@ -15,31 +15,26 @@
       font-family: 'Inter', sans-serif;
       background: linear-gradient(to bottom, #000, #2c2c2c);
       color: white;
-      overflow: hidden; /* Verhindert das Scrollen der gesamten Seite */
+      overflow: hidden;
     }
 
     main {
-      opacity: 0; /* Anfangszustand: unsichtbar */
+      opacity: 0;
       padding: 3rem 1rem;
-      height: 100vh; /* Höhe des Viewports */
-      overflow-y: hidden; /* Verhindert Scrollen innerhalb von main */
+      height: 100vh;
+      overflow-y: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       box-sizing: border-box;
       background: linear-gradient(to bottom, #000, #2c2c2c);
       visibility: visible;
-      animation: fadeIn 1s ease-in-out forwards; /* Fade-In-Effekt */
+      animation: fadeIn 1s ease-in-out forwards 0.3s;
     }
 
-    /* Fade-In-Animation */
     @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .image-wrapper {
@@ -95,53 +90,10 @@
       background-color: #b80a0a;
       transform: scale(1.05);
     }
-
-    /* Impressum-Link */
-    .impressum-link {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 0.7rem;
-      z-index: 1000;
-    }
-
-    .impressum-link a {
-      color: #ccc; /* Graue Farbe */
-      text-decoration: none; /* Kein Unterstrich */
-    }
-
-    .impressum-link a:hover {
-      color: white; /* Farbe bei Hover ändern */
-    }
-
-    @media (max-width: 600px) {
-      .button {
-        padding: 0.6rem 1rem; /* Dünnerer Button */
-        box-shadow: 0 0 8px rgba(255, 50, 50, 0.3); /* Kleinerer Schatten */
-      }
-
-      .image-wrapper img {
-        max-height: 70vh; /* Kleineres Bild */
-      }
-
-      main {
-        padding: 2rem 1rem; /* Weniger Abstand am Rand */
-      }
-
-      .back-button {
-        top: 0.5rem;
-        left: 1.1rem;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-      }
-    }
   </style>
 </head>
 <body>
   <main id="mainContent">
-    <div class="impressum-link">
-      <a href="impressum.html">Impressum</a>
-    </div>
     <div class="back-button" onclick="window.history.back()">← Zurück</div>
     <div class="image-wrapper">
       <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
@@ -150,11 +102,5 @@
       📥 Festprogramm als PDF herunterladen
     </a>
   </main>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById('mainContent').style.visibility = 'visible';
-    });
-  </script>
 </body>
 </html>
