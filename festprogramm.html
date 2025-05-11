@@ -50,21 +50,25 @@
     .back-button {
       position: absolute;
       top: 1rem;
-      left: 44.3rem;
-      background: rgba(255, 255, 255, 0.1);
+      left: 1rem;
+      background: rgba(255, 30, 30, 0.2);
       padding: 0.6rem 1rem;
       border-radius: 10px;
       font-size: 0.9rem;
       cursor: pointer;
-      color: #ccc;
-      z-index: 1000;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.2s ease;
+      color: #fff;
+      border: 1px solid rgba(255, 30, 30, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.4);
     }
 
     .back-button:hover {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
+      background: rgba(255, 50, 50, 0.3);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
     }
 
     .button {
@@ -85,31 +89,18 @@
     }
 
     @media (max-width: 600px) {
-      .button {
-        padding: 0.6rem 1rem; /* Dünnerer Button */
-        box-shadow: 0 0 8px rgba(255, 50, 50, 0.3); /* Kleinerer Schatten */
-      }
-
-      .image-wrapper img {
-        max-height: 70vh; /* Kleineres Bild */
-      }
-
-      main {
-        padding: 2rem 1rem; /* Weniger Abstand am Rand */
-      }
-
       .back-button {
         top: 0.5rem;
-        left: 1.1rem;
-        padding: 0.4rem 0.8rem;
+        left: 1rem;
         font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
       }
     }
   </style>
 </head>
 <body>
   <main id="mainContent">
-    <div class="back-button" onclick="window.history.back()">← Zurück</div>
+    <div class="back-button" onclick="window.history.back()">← <span>Zurück</span></div>
     <div class="image-wrapper">
       <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
     </div>
