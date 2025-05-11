@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#000000" />
+  <title>Festprogramm - 150 Jahre Feuerwehr Leitershofen</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      background: linear-gradient(to bottom, #000, #2c2c2c);
+      overflow: hidden;
+    }
 
+    .back-button {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #ccc;
+      z-index: 1000;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .back-button a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .image-wrapper {
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+
+    .image-wrapper img {
+      max-width: 100%;
+      max-height: 80vh;
+      display: block;
+      border-radius: 24px;
+    }
+
+    .button {
+      background-color: #d91e18;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
+      display: inline-block;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background: #b80a0a;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="back-button">
+    <a href="index.html">← Zurück</a>
+  </div>
+
+  <main>
+    <div class="image-wrapper">
+      <img src="Festprogramm-Feuerwehr-Leitershofen.png" alt="Festprogramm Feuerwehr Leitershofen" />
+    </div>
+    <a class="button" href="Festprogramm-Feuerwehr-Leitershofen.pdf" download>
+      📥 Festprogramm als PDF herunterladen
+    </a>
+  </main>
+</body>
+</html>
