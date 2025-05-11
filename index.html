@@ -62,7 +62,6 @@
       opacity: 0;
       animation: dateFadeIn 1.4s ease-out forwards;
       animation-delay: 1.8s;
-      position: relative;
     }
 
     #countdown {
@@ -82,7 +81,8 @@
       height: 75vh;
       padding: 1rem 0.5rem;
       gap: 1rem;
-      animation: fadeInMain 1s ease forwards;
+      opacity: 0;
+      animation: fadeInMenu 0.8s ease forwards;
     }
 
     .menu.visible {
@@ -118,19 +118,9 @@
       box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
     }
 
-    .btn-programm:hover {
-      background: #b80a0a;
-      transform: scale(1.05);
-    }
-
     .btn-parking {
       background: #4285F4;
       box-shadow: 0 0 15px rgba(66, 133, 244, 0.5);
-    }
-
-    .btn-parking:hover {
-      background: #3367d6;
-      transform: scale(1.05);
     }
 
     .btn-streetfest {
@@ -138,9 +128,9 @@
       box-shadow: 0 0 15px rgba(52, 168, 83, 0.5);
     }
 
-    .btn-streetfest:hover {
-      background: #2b8e4c;
-      transform: scale(1.05);
+    @keyframes fadeInMenu {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes logoCinematic {
@@ -167,40 +157,6 @@
     @keyframes fadeOut {
       to { opacity: 0; visibility: hidden; }
     }
-
-    @keyframes fadeInMain {
-      to { opacity: 1; }
-    }
-
-    @media (max-width: 600px) {
-      .intro img {
-        max-width: 80vw;
-      }
-
-      .intro h1 {
-        font-size: 2.5rem;
-      }
-
-      .intro p,
-      #countdown {
-        font-size: 1.4rem;
-      }
-
-      .menu-button {
-        font-size: 1rem;
-        padding: 0.8rem 1.2rem;
-        width: 80%;
-      }
-
-      .menu-logo {
-        width: 90%;
-        max-width: 450px;
-      }
-
-      main {
-        padding: 2rem 1rem;
-      }
-    }
   </style>
 </head>
 <body class="intro-active">
@@ -214,8 +170,8 @@
   <div class="menu" id="menu">
     <img src="logo.png" alt="Logo" class="menu-logo" />
     <a href="festprogramm.html" class="menu-button btn-programm">📜 Zum Festprogramm</a>
-    <a class="menu-button btn-parking" href="https://maps.app.goo.gl/CZa2PC3xX8wAWMDd6" target="_blank">🅿️ Anfahrt Parkplatz</a>
-    <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank">🎉 Anfahrt Straßenfest</a>
+    <a class="menu-button btn-parking" href="https://maps.app.goo.gl/CZa2PC3xX8wAWMDd6" target="_blank" rel="noopener noreferrer">🅿️ Anfahrt Parkplatz</a>
+    <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank" rel="noopener noreferrer">🎉 Anfahrt Straßenfest</a>
   </div>
 
   <script>
@@ -227,35 +183,24 @@
     function updateCountdown() {
       const now = new Date();
       const diff = festDate - now;
-      if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
-      } else {
-        countdownEl.textContent = "Es ist so weit! 🎉";
-      }
+      countdownEl.textContent = diff > 0 
+        ? `Noch ${Math.floor(diff / (1000 * 60 * 60 * 24))} Tage bis zum Festbeginn` 
+        : "Es ist so weit! 🎉";
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60);
+    setInterval(updateCountdown, 1000);
 
     function skipIntro() {
       intro.classList.add("hide");
-      document.body.classList.remove("intro-active");
       setTimeout(() => {
-        menu.classList.add("visible");
+        document.body.classList.remove("intro-active");
+        menu.style.display = "flex";
       }, 1000);
-      document.body.removeEventListener('click', skipIntro);
     }
 
     document.body.addEventListener('click', skipIntro);
-
-    setTimeout(() => {
-      intro.classList.add("hide");
-      document.body.classList.remove("intro-active");
-      setTimeout(() => {
-        menu.classList.add("visible");
-      }, 1000);
-    }, 4000);
+    setTimeout(skipIntro, 4000);
   </script>
 </body>
 </html>
