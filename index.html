@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#000000" />
-  <title>🔥 Festprogramm 🔥</title>
+  <title>🔥 Willkommen zur 150-Jahr-Feier der Feuerwehr Leitershofen! 🔥</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -16,66 +16,123 @@
       font-family: 'Inter', sans-serif;
       color: white;
       background: linear-gradient(to bottom, #000, #2c2c2c);
+      overflow: hidden;
     }
 
-    .menu {
+    .intro {
+      position: fixed;
+      inset: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 75vh;
-      padding: 1rem 0.5rem;
-      gap: 1rem;
-      opacity: 0;
-      animation: fadeInMenu 0.8s ease forwards;
-    }
-
-    .menu-logo {
-      width: 80%;
-      max-width: 600px;
-      margin-bottom: 0.5rem;
-      filter: drop-shadow(0 0 3px rgba(255, 0, 0, 0.6));
-    }
-
-    .menu-button {
-      width: 90%;
-      max-width: 350px;
-      padding: 1rem 1.5rem;
-      border-radius: 14px;
-      font-size: 1.1rem;
-      font-weight: bold;
       text-align: center;
-      text-decoration: none;
-      color: white;
-      transition: all 0.3s ease;
+      z-index: 9999;
+      background-color: #000;
+      cursor: pointer;
     }
 
-    .btn-programm { background: #d91e18; }
-    .btn-parking { background: #4285F4; }
-    .btn-streetfest { background: #34A853; }
-
-    .menu-button:hover {
-      transform: scale(1.05);
+    .intro img {
+      max-width: 40vw;
+      opacity: 0;
+      transform: scale(1.2);
+      animation: logoCinematic 1.8s ease-out forwards;
     }
 
-    @keyframes fadeInMenu {
-      0% { opacity: 0; transform: translateY(20px); }
+    .intro h1 {
+      font-size: 3.8rem;
+      margin: 1.2rem 0 0;
+      color: #ff1e1e;
+      opacity: 0;
+      animation: titleSlideUp 1.2s ease-out forwards;
+      animation-delay: 1s;
+    }
+
+    .intro p {
+      font-size: 1.8rem;
+      color: #ccc;
+      opacity: 0;
+      animation: dateFadeIn 1.4s ease-out forwards;
+      animation-delay: 1.8s;
+      position: relative;
+    }
+
+    #countdown {
+      font-size: 1.4rem;
+      color: #999;
+      margin-top: 0.5rem;
+      opacity: 0;
+      animation: countdownIn 1.2s ease-out forwards;
+      animation-delay: 2.4s;
+    }
+
+    @keyframes logoCinematic {
+      0% { opacity: 0; transform: scale(1.2) blur(5px); }
+      60% { opacity: 1; transform: scale(1) blur(0); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes titleSlideUp {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes dateFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes countdownIn {
+      0% { opacity: 0; transform: translateY(10px); }
       100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .intro img {
+        max-width: 80vw;
+      }
+
+      .intro h1 {
+        font-size: 2.5rem;
+      }
+
+      .intro p,
+      #countdown {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="menu">
-    <img src="logo.png" alt="Logo" class="menu-logo" />
-    <a href="festprogramm.html" class="menu-button btn-programm">📜 Zum Festprogramm</a>
-    <a class="menu-button btn-parking" href="https://maps.app.goo.gl/CZa2PC3xX8wAWMDd6" target="_blank">🅿️ Anfahrt Parkplatz</a>
-    <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank">🎉 Anfahrt Straßenfest</a>
+  <div class="intro" id="intro">
+    <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
+    <h1>150 Jahre</h1>
+    <p>04.07. – 06.07.2025</p>
+    <p id="countdown"></p>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelector(".menu").style.opacity = "1";
-    });
+    const intro = document.getElementById("intro");
+    const countdownEl = document.getElementById("countdown");
+    const festDate = new Date("2025-07-04T17:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = festDate - now;
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
+      } else {
+        countdownEl.textContent = "Es ist so weit! 🎉";
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000 * 60 * 60);
+
+    setTimeout(() => {
+      window.location.href = "menu.html"; // Weiterleitung zu Menü nach dem Intro
+    }, 5000); // Nach 5 Sekunden wird weitergeleitet
   </script>
 </body>
 </html>
