@@ -90,7 +90,8 @@
     }
 
     .menu-logo {
-      width: 600px;
+      width: 80%;
+      max-width: 600px;
       margin-bottom: 0.5rem;
       filter: drop-shadow(0 0 3px rgba(255, 0, 0, 0.6));
     }
@@ -173,7 +174,7 @@
 
     @media (max-width: 600px) {
       .intro img {
-        max-width: 85vw;
+        max-width: 80vw;
       }
 
       .intro h1 {
@@ -187,11 +188,17 @@
 
       .menu-button {
         font-size: 1rem;
+        padding: 0.8rem 1.2rem;
+        width: 80%;
       }
 
-      .back-button {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
+      .menu-logo {
+        width: 90%;
+        max-width: 450px;
+      }
+
+      main {
+        padding: 2rem 1rem;
       }
     }
   </style>
@@ -201,6 +208,7 @@
     <img src="logo.png" alt="Feuerwehr Leitershofen Logo" />
     <h1>150 Jahre</h1>
     <p>04.07. – 06.07.2025</p>
+    <p id="countdown"></p>
   </div>
 
   <div class="menu" id="menu">
@@ -213,18 +221,30 @@
   <script>
     const intro = document.getElementById("intro");
     const menu = document.getElementById("menu");
+    const countdownEl = document.getElementById("countdown");
+    const festDate = new Date("2025-07-04T17:00:00");
 
-    function skipIntro() {
+    function updateCountdown() {
+      const now = new Date();
+      const diff = festDate - now;
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        countdownEl.textContent = `Noch ${days} Tage bis zum Festbeginn`;
+      } else {
+        countdownEl.textContent = "Es ist so weit! 🎉";
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000 * 60 * 60);
+
+    setTimeout(() => {
       intro.classList.add("hide");
       document.body.classList.remove("intro-active");
       setTimeout(() => {
         menu.classList.add("visible");
-        document.body.style.overflow = "hidden";
       }, 1000);
-    }
-
-    setTimeout(skipIntro, 4000);
-    intro.addEventListener("click", skipIntro);
+    }, 4000);
   </script>
 </body>
 </html>
