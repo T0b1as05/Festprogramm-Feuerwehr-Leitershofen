@@ -20,20 +20,25 @@
     }
 
     .menu {
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      height: 75vh;
+      padding: 1rem 0.5rem;
       gap: 1rem;
       opacity: 0;
-      animation: fadeIn 1s ease forwards;
+      animation: fadeInMenu 0.8s ease forwards;
+    }
+
+    .menu.visible {
+      display: flex;
     }
 
     .menu-logo {
       width: 80%;
       max-width: 600px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       filter: drop-shadow(0 0 3px rgba(255, 0, 0, 0.6));
     }
 
@@ -59,19 +64,9 @@
       box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
     }
 
-    .btn-programm:hover {
-      background: #b80a0a;
-      transform: scale(1.05);
-    }
-
     .btn-parking {
       background: #4285F4;
       box-shadow: 0 0 15px rgba(66, 133, 244, 0.5);
-    }
-
-    .btn-parking:hover {
-      background: #3367d6;
-      transform: scale(1.05);
     }
 
     .btn-streetfest {
@@ -79,31 +74,9 @@
       box-shadow: 0 0 15px rgba(52, 168, 83, 0.5);
     }
 
-    .btn-streetfest:hover {
-      background: #2b8e4c;
-      transform: scale(1.05);
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    @media (max-width: 600px) {
-      .menu-button {
-        font-size: 1rem;
-        padding: 0.8rem 1.2rem;
-        width: 80%;
-      }
-
-      .menu-logo {
-        width: 90%;
-        max-width: 450px;
-      }
-
-      main {
-        padding: 2rem 1rem;
-      }
+    @keyframes fadeInMenu {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -111,4 +84,19 @@
   <div class="menu" id="menu">
     <img src="logo.png" alt="Logo" class="menu-logo" />
     <a href="festprogramm.html" class="menu-button btn-programm">📜 Zum Festprogramm</a>
-    <a class="menu
+    <a class="menu-button btn-parking" href="https://maps.app.goo.gl/CZa2PC3xX8wAWMDd6" target="_blank" rel="noopener noreferrer">🅿️ Anfahrt Parkplatz</a>
+    <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank" rel="noopener noreferrer">🎉 Anfahrt Straßenfest</a>
+  </div>
+
+  <script>
+    const menu = document.getElementById("menu");
+
+    function showMenu() {
+      menu.classList.add("visible");
+    }
+
+    document.body.addEventListener('click', showMenu);
+    setTimeout(showMenu, 4000);
+  </script>
+</body>
+</html>
