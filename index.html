@@ -74,39 +74,6 @@
       animation-delay: 2.4s;
     }
 
-    main {
-      opacity: 0;
-      padding: 3rem 1rem;
-      height: 100vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-sizing: border-box;
-      background: linear-gradient(to bottom, #000, #2c2c2c);
-    }
-
-    main.visible {
-      animation: fadeInMain 1s ease forwards;
-    }
-
-    .image-wrapper {
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(255, 0, 0, 0.3);
-      margin-bottom: 1rem;
-      margin-top: 2.5rem;
-      max-width: 100%;
-      position: relative;
-    }
-
-    .image-wrapper img {
-      max-width: 100%;
-      max-height: 80vh;
-      display: block;
-      border-radius: 24px;
-    }
-
     .menu {
       display: none;
       flex-direction: column;
@@ -123,8 +90,7 @@
     }
 
     .menu-logo {
-      width: 80%;
-      max-width: 600px;
+      width: 600px;
       margin-bottom: 0.5rem;
       filter: drop-shadow(0 0 3px rgba(255, 0, 0, 0.6));
     }
@@ -176,42 +142,6 @@
       transform: scale(1.05);
     }
 
-    .back-button {
-      position: absolute;
-      top: 2rem;
-      left: 4rem;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.6rem 1rem;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      color: #ccc;
-      z-index: 1000;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.2s ease;
-    }
-
-    .back-button:hover {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-    }
-
-    .button {
-      background-color: #d91e18;
-      padding: 1rem 1.5rem;
-      border-radius: 14px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #b80a0a;
-      transform: scale(1.05);
-    }
-
     @keyframes logoCinematic {
       0% { opacity: 0; transform: scale(1.2) blur(5px); }
       60% { opacity: 1; transform: scale(1) blur(0); }
@@ -243,7 +173,7 @@
 
     @media (max-width: 600px) {
       .intro img {
-        max-width: 80vw;
+        max-width: 85vw;
       }
 
       .intro h1 {
@@ -257,27 +187,11 @@
 
       .menu-button {
         font-size: 1rem;
-	padding: 0.8rem 1.2rem; /* Weniger Padding für kleinere Buttons */
-	width: 80%; /* Button etwas schmaler */
       }
 
       .back-button {
         font-size: 0.8rem;
         padding: 0.4rem 0.8rem;
-	left: 2rem;
-      }
-
-      .menu-logo {
-        width: 90%;
-        max-width: 450px;
-      }
-
-      main {
-        padding: 2rem 1rem;
-      }
-
-      .image-wrapper img {
-        max-height: 70vh;
       }
     }
   </style>
@@ -295,10 +209,6 @@
     <a class="menu-button btn-parking" href="https://maps.app.goo.gl/CZa2PC3xX8wAWMDd6" target="_blank">🅿️ Anfahrt Parkplatz</a>
     <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank">🎉 Anfahrt Straßenfest</a>
   </div>
-
-  <main id="mainContent">
-    <!-- Hauptinhalt hier -->
-  </main>
 
   <script>
     const intro = document.getElementById("intro");
