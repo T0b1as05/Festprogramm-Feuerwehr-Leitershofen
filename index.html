@@ -66,7 +66,6 @@
       animation-delay: 2.4s;
     }
 
-    /* Impressum-Link exakt wie in festprogramm.html, nur heller */
     .impressum-link {
       position: absolute;
       top: 1rem;
@@ -76,7 +75,7 @@
     }
 
     .impressum-link a {
-      color: #eee; /* etwas heller als #ccc */
+      color: #eee;
       text-decoration: none;
     }
 
@@ -152,9 +151,18 @@
     updateCountdown();
     setInterval(updateCountdown, 1000 * 60 * 60);
 
+    // Automatischer Weiterleitungs-Timer (optional, 5 Sekunden)
     setTimeout(() => {
       window.location.href = "menu.html";
     }, 5000);
+
+    // Klick auf den gesamten Bildschirm weiterleitet, außer Impressum
+    document.addEventListener("click", (event) => {
+      const isImpressum = event.target.closest(".impressum-link");
+      if (!isImpressum) {
+        window.location.href = "menu.html";
+      }
+    });
   </script>
 </body>
 </html>
