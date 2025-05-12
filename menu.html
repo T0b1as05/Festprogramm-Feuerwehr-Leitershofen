@@ -43,6 +43,7 @@
     }
 
     .menu-button {
+      position: relative;
       width: 90%;
       max-width: 350px;
       padding: 1rem 1.5rem;
@@ -52,47 +53,35 @@
       text-align: center;
       text-decoration: none;
       color: white;
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      position: relative;
       overflow: hidden;
-      transition: box-shadow 0.3s ease;
     }
 
-    /* Animationseffekt als extra Element */
-    .menu-button span {
+    /* Hintergrund für den Hover-Effekt */
+    .menu-button::before {
+      content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: transparent;
-      transition: background 0.3s;
-      pointer-events: none;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s, opacity 0.3s;
+      opacity: 0;
+      transform: scale(1.1);
+      border-radius: 14px;
     }
 
-    .menu-button:hover {
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    .menu-button:hover::before {
+      opacity: 1;
+      transform: scale(1);
     }
 
-    .menu-button:hover span {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .menu-button:active span {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    /* Farben für die jeweiligen Buttons */
+    /* Farben für die Buttons */
     .btn-programm {
       background: #d91e18;
       box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
-    }
-
-    .btn-programm:hover span {
-      background: rgba(255, 50, 50, 0.15);
     }
 
     .btn-parking {
@@ -100,17 +89,9 @@
       box-shadow: 0 0 15px rgba(66, 133, 244, 0.5);
     }
 
-    .btn-parking:hover span {
-      background: rgba(66, 133, 244, 0.15);
-    }
-
     .btn-streetfest {
       background: #34A853;
       box-shadow: 0 0 15px rgba(52, 168, 83, 0.5);
-    }
-
-    .btn-streetfest:hover span {
-      background: rgba(52, 168, 83, 0.15);
     }
 
     .impressum-link {
@@ -159,15 +140,9 @@
 <body>
   <div class="menu" id="menu">
     <img src="logo.png" alt="Logo" class="menu-logo" />
-    <a href="festprogramm.html" class="menu-button btn-programm">
-      <span></span> 📜 Zum Festprogramm
-    </a>
-    <a class="menu-button btn-parking" href="https://maps.app.goo.gl/CZa2PC3xX8wAWMDd6" target="_blank" rel="noopener noreferrer">
-      <span></span> 🅿️ Anfahrt Parkplatz
-    </a>
-    <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank" rel="noopener noreferrer">
-      <span></span> 🎉 Anfahrt Straßenfest
-    </a>
+    <a href="festprogramm.html" class="menu-button btn-programm">📜 Zum Festprogramm</a>
+    <a class="menu-button btn-parking" href="https://maps.app.goo.gl/CZa2PC3xX8wAWMDd6" target="_blank" rel="noopener noreferrer">🅿️ Anfahrt Parkplatz</a>
+    <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank" rel="noopener noreferrer">🎉 Anfahrt Straßenfest</a>
   </div>
 
   <div class="impressum-link">
