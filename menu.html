@@ -74,25 +74,42 @@
       box-shadow: 0 0 15px rgba(52, 168, 83, 0.5);
     }
 
+    .btn-member {
+      background: #f1c40f; /* Gelbe Farbe für "Mitglied werden" */
+      box-shadow: 0 0 15px rgba(241, 196, 15, 0.5);
+    }
+
+    /* Farbige Umrandung beim Hover/Fokus pro Button */
     .btn-programm:hover,
     .btn-programm:focus {
       outline: none;
-      box-shadow: 0 0 0 4px rgba(217, 30, 24, 0.6),
-                  0 0 15px rgba(217, 30, 24, 0.8);
+      box-shadow:
+        0 0 0 4px rgba(217, 30, 24, 0.6),
+        0 0 15px rgba(217, 30, 24, 0.8);
     }
 
     .btn-parking:hover,
     .btn-parking:focus {
       outline: none;
-      box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.6),
-                  0 0 15px rgba(66, 133, 244, 0.8);
+      box-shadow:
+        0 0 0 4px rgba(66, 133, 244, 0.6),
+        0 0 15px rgba(66, 133, 244, 0.8);
     }
 
     .btn-streetfest:hover,
     .btn-streetfest:focus {
       outline: none;
-      box-shadow: 0 0 0 4px rgba(52, 168, 83, 0.6),
-                  0 0 15px rgba(52, 168, 83, 0.8);
+      box-shadow:
+        0 0 0 4px rgba(52, 168, 83, 0.6),
+        0 0 15px rgba(52, 168, 83, 0.8);
+    }
+
+    .btn-member:hover,
+    .btn-member:focus {
+      outline: none;
+      box-shadow:
+        0 0 0 4px rgba(241, 196, 15, 0.6),
+        0 0 15px rgba(241, 196, 15, 0.8);
     }
 
     .impressum-link {
@@ -112,29 +129,6 @@
       color: white;
     }
 
-    .social-icons {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.2rem;
-      z-index: 999;
-      opacity: 0.85;
-    }
-
-    .social-icons a img {
-      width: 36px;
-      height: 36px;
-      transition: transform 0.3s ease;
-    }
-
-    .social-icons a:hover img {
-      transform: scale(1.15);
-    }
-
     @keyframes fadeInMenu {
       0% {
         opacity: 0;
@@ -146,9 +140,11 @@
       }
     }
 
+    /* Media Query für kleine Bildschirme */
     @media (max-width: 768px) {
       .menu {
         height: 85vh;
+        padding: 1rem 0.5rem;
         gap: 1rem;
       }
 
@@ -162,36 +158,16 @@
         padding: 0.8rem 1rem;
         font-size: 1rem;
       }
-
-      .social-icons {
-        bottom: 0.8rem;
-      }
-
-      .social-icons a img {
-        width: 30px;
-        height: 30px;
-      }
     }
   </style>
 </head>
 <body>
   <div class="menu" id="menu">
-    <img src="logo.png" alt="Logo" class="menu-logo" />
+    <img src="logo-klein.png" alt="Logo" class="menu-logo" />
     <a href="festprogramm.html" class="menu-button btn-programm">📜 Zum Festprogramm</a>
     <a class="menu-button btn-parking" href="https://maps.app.goo.gl/CZa2PC3xX8wAWMDd6" target="_blank" rel="noopener noreferrer">🅿️ Anfahrt Parkplatz</a>
     <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank" rel="noopener noreferrer">🎉 Anfahrt Straßenfest</a>
-  </div>
-
-  <div class="social-icons">
-    <a href="https://feuerwehr-leitershofen.de" target="_blank" rel="noopener noreferrer" title="Zur Website">
-      <img src="Logo-klein.png" alt="Website" />
-    </a>
-    <a href="https://www.instagram.com/feuerwehrleitershofen" target="_blank" rel="noopener noreferrer" title="Instagram">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
-    </a>
-    <a href="https://www.facebook.com/ffleitershofen" target="_blank" rel="noopener noreferrer" title="Facebook">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
-    </a>
+    <a class="menu-button btn-member" href="https://feuerwehr-leitershofen.de/index.php/ueber-uns/mitglied-werden" target="_blank" rel="noopener noreferrer">👨‍🚒 Mitglied werden</a>
   </div>
 
   <div class="impressum-link">
