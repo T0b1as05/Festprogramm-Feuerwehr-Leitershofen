@@ -74,6 +74,22 @@
       box-shadow: 0 0 15px rgba(52, 168, 83, 0.5);
     }
 
+    .impressum-link {
+      position: absolute;
+      bottom: 10px;
+      left: 16px;
+      font-size: 0.85rem;
+    }
+
+    .impressum-link a {
+      color: #999;
+      text-decoration: none;
+    }
+
+    .impressum-link a:hover {
+      text-decoration: underline;
+    }
+
     @keyframes fadeInMenu {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -88,10 +104,12 @@
     <a class="menu-button btn-streetfest" href="https://maps.app.goo.gl/9SxGPtQYKJv7vTsf6" target="_blank" rel="noopener noreferrer">🎉 Anfahrt Straßenfest</a>
   </div>
 
+  <div class="impressum-link">
+    <a href="impressum.html">Impressum</a>
+  </div>
+
   <script>
     const menu = document.getElementById("menu");
-
-    // Menü sofort sichtbar machen
     menu.classList.add("visible");
   </script>
 </body>
