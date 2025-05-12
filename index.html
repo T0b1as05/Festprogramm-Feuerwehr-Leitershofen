@@ -83,6 +83,27 @@
       color: white;
     }
 
+    .fallback-button {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      background-color: #d91e18;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .fallback-button:hover {
+      background-color: #b91614;
+    }
+
+    .visible {
+      display: block;
+    }
+
     @keyframes logoCinematic {
       0% { opacity: 0; transform: scale(1.2) blur(5px); }
       60% { opacity: 1; transform: scale(1) blur(0); }
@@ -117,6 +138,11 @@
       #countdown {
         font-size: 1.4rem;
       }
+
+      .fallback-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+      }
     }
   </style>
 </head>
@@ -130,11 +156,13 @@
     <h1>150 Jahre</h1>
     <p>04.07. – 06.07.2025</p>
     <p id="countdown"></p>
+    <button class="fallback-button" id="fallbackButton" onclick="redirectToMenu()">Weiter zum Menü</button>
   </div>
 
   <script>
     const intro = document.getElementById("intro");
     const countdownEl = document.getElementById("countdown");
+    const fallbackButton = document.getElementById("fallbackButton");
     const festDate = new Date("2025-07-04T17:00:00");
 
     function updateCountdown() {
@@ -148,21 +176,30 @@
       }
     }
 
+    function redirectToMenu() {
+      window.location.href = "menu.html";
+    }
+
     updateCountdown();
     setInterval(updateCountdown, 1000 * 60 * 60);
 
     // Automatischer Weiterleitungs-Timer (optional, 5 Sekunden)
     setTimeout(() => {
-      window.location.href = "menu.html";
+      redirectToMenu();
     }, 5000);
 
     // Klick auf den gesamten Bildschirm weiterleitet, außer Impressum
     document.addEventListener("click", (event) => {
       const isImpressum = event.target.closest(".impressum-link");
       if (!isImpressum) {
-        window.location.href = "menu.html";
+        redirectToMenu();
       }
     });
+
+    // Fallback-Button anzeigen nach 5 Sekunden
+    setTimeout(() => {
+      fallbackButton.classList.add("visible");
+    }, 5000);
   </script>
 </body>
 </html>
