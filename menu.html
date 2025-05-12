@@ -57,18 +57,81 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
     }
 
-    .btn-programm { background: #d91e18; box-shadow: 0 0 15px rgba(255, 50, 50, 0.5); }
-    .btn-parking { background: #4285F4; box-shadow: 0 0 15px rgba(66, 133, 244, 0.5); }
-    .btn-streetfest { background: #34A853; box-shadow: 0 0 15px rgba(52, 168, 83, 0.5); }
+    .menu-button::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.1);
+      transition: opacity 0.3s, transform 0.3s;
+      opacity: 0;
+      transform: scale(0.9);
+    }
 
-    .impressum-link { position: absolute; top: 1rem; right: 1rem; font-size: 0.7rem; z-index: 1000; }
+    .menu-button:hover::after {
+      opacity: 1;
+      transform: scale(1);
+    }
 
-    .impressum-link a { color: #ccc; text-decoration: none; }
-    .impressum-link a:hover { color: white; }
+    .menu-button:active {
+      transform: scale(0.98);
+    }
 
-    @keyframes fadeInMenu { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+    .btn-programm {
+      background: #d91e18;
+      box-shadow: 0 0 15px rgba(255, 50, 50, 0.5);
+    }
+
+    .btn-programm:hover {
+      background: #e03428;
+      box-shadow: 0 0 25px rgba(255, 50, 50, 0.7), 0 0 15px rgba(255, 50, 50, 0.5) inset;
+    }
+
+    .btn-parking {
+      background: #4285F4;
+      box-shadow: 0 0 15px rgba(66, 133, 244, 0.5);
+    }
+
+    .btn-parking:hover {
+      background: #5a9bf6;
+      box-shadow: 0 0 25px rgba(66, 133, 244, 0.7), 0 0 15px rgba(66, 133, 244, 0.5) inset;
+    }
+
+    .btn-streetfest {
+      background: #34A853;
+      box-shadow: 0 0 15px rgba(52, 168, 83, 0.5);
+    }
+
+    .btn-streetfest:hover {
+      background: #46c169;
+      box-shadow: 0 0 25px rgba(52, 168, 83, 0.7), 0 0 15px rgba(52, 168, 83, 0.5) inset;
+    }
+
+    .impressum-link {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      z-index: 1000;
+    }
+
+    .impressum-link a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .impressum-link a:hover {
+      color: white;
+    }
+
+    @keyframes fadeInMenu {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
     /* Media Query für kleine Bildschirme */
     @media (max-width: 768px) {
@@ -80,15 +143,14 @@
 
       .menu-logo {
         width: 90%;
-        max-width: 400px; }
+        max-width: 400px;
+      }
 
       .menu-button {
         max-width: 300px;
         padding: 0.8rem 1rem;
         font-size: 1rem;
       }
-
-
     }
   </style>
 </head>
